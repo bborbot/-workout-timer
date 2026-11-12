@@ -25,6 +25,8 @@ REC = {
     "strength": ("2–3× a week, not on consecutive days · 30–45 min", 2, "2–3"),
     "stretch":  ("2–3× a week or after each workout · 10–20 min", 2, "2–3"),
 }
+SHORT = {"warmup": "Warm-up", "jumps": "Power", "speed": "Speed", "bag": "Endurance",
+         "animal": "Coord / Balance", "strength": "Strength", "stretch": "Stretching"}
 FONT = "C:/Windows/Fonts/arialbd.ttf"
 
 
@@ -85,8 +87,9 @@ INDEX = """<!doctype html>
 <link rel="stylesheet" href="style.css">
 </head><body><main>
 <h1>Workouts</h1>
+<div id="today"></div>
 <p class="note">Recommended per week for a healthy adult (based on WHO guidance: 150–300 min of moderate
-or 75–150 min of vigorous activity, strength at least 2 days). Set your own weekly plan under each workout.
+or 75–150 min of vigorous activity, strength at least 2 days). Set your own weekly plan under each workout, or make a weekly schedule — then the plan is counted from it.
 A workout played in the app is marked automatically with its minutes; tap <b>+</b> if you trained without the app.
 At the start of a new week you will see how last week went. Marks are stored on this phone only.</p>
 <p class="disclaimer">This is the author’s personal view, not sports or medical advice. If you have health problems
@@ -160,6 +163,29 @@ def guide_page(key, name):
     open(f"{key}-guide.html", "w", encoding="utf-8").write(GUIDE.format(key=key, name=name, body="\n".join(parts)))
 
 
+SCHED = """<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Weekly schedule</title>
+<link rel="stylesheet" href="style.css">
+</head><body><main>
+<a class="back" href="index.html">← all workouts</a>
+<h1>Weekly schedule</h1>
+<p class="note">Pick a day, then tap the workouts for the morning, the day or the evening. The schedule repeats every week;
+your weekly plan is counted from it. Stored on this phone only.</p>
+<div class="dtabs" id="days"></div>
+<h2 id="dname"></h2>
+<div id="slots"></div>
+<button class="sub" id="example">Use example week</button>
+<button class="sub" id="clear">Clear schedule</button>
+<a class="big" href="index.html">Done</a>
+</main>
+<script>window.HOME = {home};</script>
+<script src="schedule.js"></script>
+</body></html>
+"""
+
+
 def main():
     lib = json.load(open("music/library.json", encoding="utf-8"))
     items = []
@@ -179,7 +205,7 @@ def main():
                      f'<div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div>'
                      f'<div class="plan">My plan: <button class="pm" data-d="-1" aria-label="less">−</button>'
                      f'<span class="pv"></span><button class="pm" data-d="1" aria-label="more">+</button><span class="pmin"></span></div></div>')
-    home = {"order": list(APPS), "apps": {k: {"name": v[0], "color": v[1], "min": REC[k][1], "goal": REC[k][2]}
+    home = {"order": list(APPS), "apps": {k: {"name": v[0], "short": SHORT[k], "color": v[1], "min": REC[k][1], "goal": REC[k][2]}
                                           for k, v in APPS.items()}}
     for s in (180, 192, 512):
         icon(f"icons/home-{s}.png", "#26262c", "Fit", s)
@@ -188,6 +214,7 @@ def main():
                "icons": [{"src": "icons/home-192.png", "sizes": "192x192", "type": "image/png"},
                          {"src": "icons/home-512.png", "sizes": "512x512", "type": "image/png"}]},
               open("home.webmanifest", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    open("schedule.html", "w", encoding="utf-8").write(SCHED.format(home=json.dumps(home, ensure_ascii=False)))
     open("index.html", "w", encoding="utf-8").write(INDEX.format(items="\n".join(items),
                                                                  home=json.dumps(home, ensure_ascii=False)))
 

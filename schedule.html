@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Weekly schedule</title>
+<link rel="stylesheet" href="style.css">
+</head><body><main>
+<a class="back" href="index.html">← all workouts</a>
+<h1>Weekly schedule</h1>
+<p class="note">Pick a day, then tap the workouts for the morning, the day or the evening. The schedule repeats every week;
+your weekly plan is counted from it. Stored on this phone only.</p>
+<div class="dtabs" id="days"></div>
+<h2 id="dname"></h2>
+<div id="slots"></div>
+<button class="sub" id="example">Use example week</button>
+<button class="sub" id="clear">Clear schedule</button>
+<a class="big" href="index.html">Done</a>
+</main>
+<script>window.HOME = {"order": ["warmup", "jumps", "speed", "bag", "animal", "strength", "stretch"], "apps": {"warmup": {"name": "Warm-up", "short": "Warm-up", "color": "#c2410c", "min": 0, "goal": ""}, "jumps": {"name": "Power", "short": "Power", "color": "#d93636", "min": 1, "goal": "1–2"}, "speed": {"name": "Speed & Reaction", "short": "Speed", "color": "#a16207", "min": 1, "goal": "1"}, "bag": {"name": "Endurance", "short": "Endurance", "color": "#1f5fd6", "min": 2, "goal": "2–3"}, "animal": {"name": "Coordination / Balance", "short": "Coord / Balance", "color": "#1d8a4e", "min": 2, "goal": "2"}, "strength": {"name": "Strength", "short": "Strength", "color": "#7a3dc9", "min": 2, "goal": "2–3"}, "stretch": {"name": "Stretching", "short": "Stretching", "color": "#0b7285", "min": 2, "goal": "2–3"}}};</script>
+<script src="schedule.js"></script>
+</body></html>

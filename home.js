@@ -11,10 +11,42 @@ const store = {
 };
 const readLog = () => store.get("wt_log", []);
 const writeLog = (v) => store.set("wt_log", v);
+// Расписание (schedule.js): если оно заполнено, недельный план считается из него.
+const SLOTS = [["m", "Morning"], ["d", "Day"], ["e", "Evening"]];
+const sched = () => store.get("wt_sched", {});
+function schedCounts() {
+  const s = sched(), c = {}; let any = false;
+  for (const k of H.order) c[k] = 0;
+  for (const d of Object.values(s)) for (const [sk] of SLOTS) for (const k of (d[sk] || [])) { if (k !== "warmup") c[k]++; any = true; }   // разминка — перед каждой, не цель
+  return any ? c : null;
+}
 function plan() {
+  const sc = schedCounts();
+  if (sc) return sc;
   const p = store.get("wt_plan", {}), out = {};
   for (const k of H.order) out[k] = Number.isInteger(p[k]) ? p[k] : H.apps[k].min;
   return out;
+}
+
+// «Today» и «Tomorrow» из расписания; ✓ — если за сегодня есть отметка этой тренировки (по одной на пункт).
+function renderToday() {
+  const box = document.getElementById("today"), s = sched(), di = (new Date().getDay() + 6) % 7;
+  if (!schedCounts()) {
+    box.innerHTML = `<div class="tday"><h2>Today</h2><p class="note">No schedule yet.</p>
+      <a class="sub" href="schedule.html">🗓 Make a weekly schedule</a></div>`;
+    return;
+  }
+  const left = readLog().filter((x) => x.d === ymd(new Date())).map((x) => x.t);
+  const line = (d, mark) => SLOTS.filter(([sk]) => (d[sk] || []).length).map(([sk, sn]) =>
+    `<div class="tslot"><span class="tsn">${sn}</span><span class="chips">` + d[sk].map((k) => {
+      let done = false;
+      if (mark) { const j = left.indexOf(k); if (j >= 0) { left.splice(j, 1); done = true; } }
+      return `<a class="chip${done ? " done" : ""}" style="background:${H.apps[k].color}" href="${k}.html">${done ? "✓ " : ""}${H.apps[k].short}</a>`;
+    }).join("") + "</span></div>").join("") || '<p class="note">Rest day.</p>';
+  const nd = (di + 1) % 7;
+  box.innerHTML = `<div class="tday"><h2>Today · ${DAYS[di]}</h2>${line(s[di] || {}, true)}
+    <h3>Tomorrow · ${DAYS[nd]}</h3>${line(s[nd] || {}, false)}
+    <a class="sub" href="schedule.html">🗓 Weekly schedule</a></div>`;
 }
 function ymd(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
 function monday(shift) {
@@ -40,7 +72,9 @@ function render() {
     const card = document.querySelector(`.card[data-key="${k}"]`), s = st.per[k];
     card.querySelector(".n").textContent = s.plan ? `${s.n} / ${s.plan}` : String(s.n);
     card.classList.toggle("ok", s.plan > 0 && s.n >= s.plan);
-    card.querySelector(".pv").textContent = s.plan ? `${s.plan}× a week` : "no goal";
+    const fromSched = !!schedCounts();
+    card.querySelector(".pv").textContent = (s.plan ? `${s.plan}× a week` : "no goal") + (fromSched ? " · from schedule" : "");
+    card.querySelectorAll(".pm").forEach((b) => { b.hidden = fromSched; });
     card.querySelector(".pmin").textContent = s.m ? ` · ${s.m} min this week` : "";
   }
   document.getElementById("wk").textContent = weekShift === 0 ? "This week" : `${f(dates[0])} – ${f(dates[6])}`;
@@ -58,7 +92,7 @@ function render() {
       c.addEventListener("click", () => {
         if (!confirm(`Remove “${H.apps[x.t].name}” on ${DAYS[i]} ${d.getDate()}?`)) return;
         const l = readLog(), j = l.findIndex((y) => y.id === x.id && y.d === x.d && y.t === x.t);
-        if (j >= 0) { l.splice(j, 1); writeLog(l); render(); }
+        if (j >= 0) { l.splice(j, 1); writeLog(l); render(); renderToday(); }
       });
       chips.appendChild(c);
     });
@@ -91,7 +125,7 @@ document.querySelectorAll(".card .plus").forEach((b) => b.addEventListener("clic
   if (ans === null) return;
   const m = parseInt(ans, 10), l = readLog();
   l.push({ d: ymd(new Date()), t: k, m: Number.isFinite(m) && m > 0 ? Math.min(m, 600) : 0, id: Date.now() });
-  writeLog(l); weekShift = 0; render();
+  writeLog(l); weekShift = 0; render(); renderToday();
 }));
 document.querySelectorAll(".card .pm").forEach((b) => b.addEventListener("click", () => {
   const k = b.closest(".card").dataset.key, p = store.get("wt_plan", {}), cur = plan()[k];
@@ -99,6 +133,6 @@ document.querySelectorAll(".card .pm").forEach((b) => b.addEventListener("click"
 }));
 document.getElementById("prev").addEventListener("click", () => { weekShift--; render(); });
 document.getElementById("next").addEventListener("click", () => { if (weekShift < 0) { weekShift++; render(); } });
-render(); report();
+render(); report(); renderToday();
 if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});

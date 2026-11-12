@@ -81,3 +81,20 @@ a.sub.guide { font-weight:700; font-size:17px; margin:4px 0 14px; }
 .guidepage ul, .guidepage ol { padding-left:22px; margin:6px 0; }
 .guidepage li { margin:6px 0; }
 .guidepage .disclaimer { margin-top:16px; }
+
+.tday { background:var(--card); border:2px solid var(--rest); border-radius:16px; padding:4px 14px 2px; margin:0 0 14px; }
+.tday h2 { margin:10px 0 6px; } .tday h3 { margin:14px 0 6px; font-size:17px; color:var(--muted); }
+.tslot { display:flex; gap:10px; align-items:flex-start; margin:6px 0; }
+.tsn { width:72px; flex:none; font-size:15px; color:var(--muted); padding-top:5px; }
+a.chip { text-decoration:none; display:inline-block; }
+.chip.done { outline:3px solid var(--rest); outline-offset:1px; }
+.dtabs { display:flex; gap:6px; flex-wrap:wrap; margin:10px 0 4px; }
+.dtab { flex:1; min-width:44px; padding:10px 0; border-radius:12px; border:1px solid var(--line); background:var(--card);
+  color:var(--fg); font-size:16px; font-weight:700; display:flex; flex-direction:column; align-items:center; }
+.dtab small { font-size:12px; font-weight:400; color:var(--muted); }
+.dtab.today { border-color:var(--accent); }
+.dtab.on { background:var(--accent); color:#fff; } .dtab.on small { color:#fff; }
+.slot { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:4px 12px 12px; margin-bottom:10px; }
+.slot h3 { margin:8px 0; }
+.chip.toggle { background:var(--bg); color:var(--fg); border:1px solid var(--line); padding:8px 12px; font-size:15px; }
+.chip.toggle.on { color:#fff; border-color:transparent; }
