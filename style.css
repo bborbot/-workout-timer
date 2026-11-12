@@ -124,3 +124,4 @@ details.disclaimer p { margin:6px 0 2px; font-weight:400; }
 a.sub.guide.short { padding:9px; font-size:15px; margin:0 0 10px; }
 
 .tday.tmini a.mk { display:inline-block; margin-top:4px; white-space:nowrap; }
+.menu .card a.howto { flex:none; white-space:nowrap; font-size:15px; margin-left:auto; }

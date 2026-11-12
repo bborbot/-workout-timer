@@ -222,7 +222,7 @@ def main():
                      f'<div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div>'
                      f'<div class="plan">My plan: <button class="pm" data-d="-1" aria-label="less">−</button>'
                      f'<span class="pv"></span><button class="pm" data-d="1" aria-label="more">+</button><span class="pmin"></span>'
-                     f'<a class="howto" href="{key}-guide.html">📖 How to</a></div></div>')
+                     f'<a class="howto" href="{key}-guide.html">📖 How to do it</a></div></div>')
     home = {"order": list(APPS), "apps": {k: {"name": v[0], "short": SHORT[k], "color": v[1], "min": REC[k][1], "goal": REC[k][2]}
                                           for k, v in APPS.items()}}
     for s in (180, 192, 512):
