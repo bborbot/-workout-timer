@@ -33,3 +33,29 @@ a.back { color:var(--accent); text-decoration:none; font-size:17px; }
 audio { display:none; }
 h2 { font-size:22px; margin:26px 0 4px; }
 label.sub { cursor:pointer; }
+
+.card { display:flex; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:16px;
+  margin-bottom:12px; padding-right:10px; }
+.card.ok { border:2px solid var(--rest); }
+.menu .card a { flex:1; border:0; margin:0; background:none; font-size:20px; min-width:0; }
+.card a span { display:flex; flex-direction:column; min-width:0; }
+.card small { font-size:14px; font-weight:400; color:var(--muted); margin-top:2px; }
+.cnt { display:flex; flex-direction:column; align-items:center; gap:6px; }
+.cnt .n { font-size:17px; font-weight:700; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.card.ok .n { color:var(--rest); }
+.plus { width:48px; height:44px; border-radius:12px; border:1px solid var(--line); background:var(--bg); color:var(--fg);
+  font-size:26px; font-weight:700; }
+.wkbar { display:flex; align-items:center; justify-content:space-between; margin-top:22px; }
+.wkbar h2 { margin:0; }
+.wkbar button { width:48px; height:44px; border-radius:12px; border:1px solid var(--line); background:var(--card);
+  color:var(--fg); font-size:26px; }
+.wkbar button:disabled { opacity:.35; }
+.sum { font-weight:700; margin:8px 0; }
+.day { display:flex; gap:10px; align-items:flex-start; padding:8px 0; border-bottom:1px solid var(--line); }
+.day.today .dn { color:var(--accent); font-weight:800; }
+.dn { width:70px; flex:none; font-variant-numeric:tabular-nums; }
+.chips { display:flex; flex-wrap:wrap; gap:6px; }
+.chip { border:0; border-radius:10px; padding:5px 10px; color:#fff; font-size:15px; font-weight:600; }
+.none { color:var(--muted); }
+.disclaimer { font-size:15px; font-weight:600; color:var(--fg); border-left:4px solid var(--lead); padding:6px 10px;
+  background:var(--card); border-radius:6px; }

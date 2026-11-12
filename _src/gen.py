@@ -13,6 +13,16 @@ APPS = {
     "strength": ("Strength",     "#7a3dc9", "S"),
     "stretch":  ("Stretching",   "#0b7285", "St"),
 }
+# Рекомендации на неделю (одобрены оператором 12.11.2026): текст, минимум раз для «цель выполнена», запись цели
+REC = {
+    "warmup":   ("before each workout · 5–10 min", 0, ""),
+    "jumps":    ("1–2× a week · 15–20 min", 1, "1–2"),
+    "speed":    ("1× a week · 10–15 min", 1, "1"),
+    "bag":      ("2–3× a week · 20–40 min", 2, "2–3"),
+    "animal":   ("2× a week · 15–20 min", 2, "2"),
+    "strength": ("2–3× a week, not on consecutive days · 30–45 min", 2, "2–3"),
+    "stretch":  ("2–3× a week or after each workout · 10–20 min", 2, "2–3"),
+}
 FONT = "C:/Windows/Fonts/arialbd.ttf"
 
 
@@ -65,18 +75,32 @@ INDEX = """<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Workouts</title>
-<link rel="apple-touch-icon" href="icons/jumps-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Workouts">
+<link rel="apple-touch-icon" href="icons/home-180.png">
+<link rel="manifest" href="home.webmanifest">
 <link rel="stylesheet" href="style.css">
 </head><body><main>
 <h1>Workouts</h1>
+<p class="note">Recommended per week for a healthy adult (based on WHO guidance: 150–300 min of moderate
+or 75–150 min of vigorous activity, strength at least 2 days). Tap <b>+</b> when you did a workout today;
+a workout played to the end is marked automatically. Marks are stored on this phone only.</p>
+<p class="disclaimer">This is the author’s personal view, not sports or medical advice. If you have health problems
+or injuries, or the workouts are for a child, ask a doctor or a coach first.</p>
 <div class="menu">
 {items}
 </div>
+<div class="wkbar"><button id="prev" aria-label="previous week">‹</button><h2 id="wk">This week</h2><button id="next" aria-label="next week">›</button></div>
+<p class="sum" id="sum"></p>
+<div id="days"></div>
+<p class="note">Tap a coloured mark to remove it. Several workouts a day are fine, e.g. Warm-up → Strength → Stretching.
+</p>
 <p class="note">Open a workout in Safari, tap Share → Add to Home Screen to get its own icon.
 Inside, tap “Save music for offline use” and the workout will run without internet.</p>
 <p class="note"><a href="credits.html">Music and licenses</a></p>
 </main>
-<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {{}});</script>
+<script>window.HOME = {home};</script>
+<script src="home.js"></script>
 </body></html>
 """
 
@@ -93,8 +117,21 @@ def main():
                "icons": [{"src": f"icons/{key}-192.png", "sizes": "192x192", "type": "image/png"},
                          {"src": f"icons/{key}-512.png", "sizes": "512x512", "type": "image/png"}]}
         json.dump(man, open(f"{key}.webmanifest", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-        items.append(f'<a href="{key}.html"><img src="icons/{key}-180.png" alt="">{name}</a>')
-    open("index.html", "w", encoding="utf-8").write(INDEX.format(items="\n".join(items)))
+        rec, mn, goal = REC[key]
+        items.append(f'<div class="card" data-key="{key}"><a href="{key}.html"><img src="icons/{key}-180.png" alt="">'
+                     f'<span><b>{name}</b><small>{rec}</small></span></a>'
+                     f'<div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div></div>')
+    home = {"order": list(APPS), "apps": {k: {"name": v[0], "color": v[1], "min": REC[k][1], "goal": REC[k][2]}
+                                          for k, v in APPS.items()}}
+    for s in (180, 192, 512):
+        icon(f"icons/home-{s}.png", "#26262c", "Fit", s)
+    json.dump({"name": "Workouts", "short_name": "Workouts", "start_url": "index.html", "scope": "./",
+               "display": "standalone", "background_color": "#0e0e11", "theme_color": "#26262c",
+               "icons": [{"src": "icons/home-192.png", "sizes": "192x192", "type": "image/png"},
+                         {"src": "icons/home-512.png", "sizes": "512x512", "type": "image/png"}]},
+              open("home.webmanifest", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    open("index.html", "w", encoding="utf-8").write(INDEX.format(items="\n".join(items),
+                                                                 home=json.dumps(home, ensure_ascii=False)))
 
     names = {"warmup": "Warm-up", "speed": "Speed & Reaction", "jumps": "Power", "bag": "Endurance", "animal": "Coordination / Balance", "strength": "Strength",
              "stretch": "Stretching", "relax": "Rest"}

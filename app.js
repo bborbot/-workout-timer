@@ -226,7 +226,14 @@ async function start() {
 $("start").addEventListener("click", start);
 player.addEventListener("play", () => { $("start").textContent = "Pause"; });
 player.addEventListener("pause", () => { if (audioUrl) $("start").textContent = "Resume"; });
-player.addEventListener("ended", () => { $("phase").textContent = "Done!"; $("start").textContent = "Again"; });
+player.addEventListener("ended", () => {
+  $("phase").textContent = "Done! Marked for today ✓"; $("start").textContent = "Again";
+  try {   // отметка на главной (home.js читает тот же ключ wt_log)
+    const d = new Date(), day = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+    const log = JSON.parse(localStorage.getItem("wt_log") || "[]"); log.push({ d: day, t: TYPE });
+    localStorage.setItem("wt_log", JSON.stringify(log));
+  } catch (e) {}
+});
 
 function tick() {
   if (audioUrl && schedule.length) {
