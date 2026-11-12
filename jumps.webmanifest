@@ -1,6 +1,6 @@
 {
- "name": "Прыжки",
- "short_name": "Прыжки",
+ "name": "Power",
+ "short_name": "Power",
  "start_url": "jumps.html",
  "scope": "./",
  "display": "standalone",

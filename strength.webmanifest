@@ -1,6 +1,6 @@
 {
- "name": "Силовые",
- "short_name": "Силовые",
+ "name": "Strength",
+ "short_name": "Strength",
  "start_url": "strength.html",
  "scope": "./",
  "display": "standalone",

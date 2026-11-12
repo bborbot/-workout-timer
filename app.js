@@ -5,10 +5,11 @@
 
 const TYPE = document.body.dataset.type;
 const PRESETS = {
-  jumps:    { name: "Прыжки",       work: 30,  rest: 30, total: 15 },
-  bag:      { name: "Груша",        work: 120, rest: 60, total: 20 },
-  animal:   { name: "Animal moves", work: 45,  rest: 15, total: 20 },
-  strength: { name: "Силовые",      work: 40,  rest: 20, total: 30 },
+  jumps:    { name: "Power",        work: 30,  rest: 30, total: 15 },
+  bag:      { name: "Endurance",    work: 120, rest: 60, total: 20 },
+  animal:   { name: "Coordination", work: 45,  rest: 15, total: 20 },
+  strength: { name: "Strength",     work: 40,  rest: 20, total: 30 },
+  stretch:  { name: "Stretching",   work: 45,  rest: 15, total: 20 },
 };
 const SR = 22050;          // частота дорожки: моно 22 кГц хватает для музыки в наушниках
 const LEAD = 6;            // секунд до первого раунда (спокойная музыка + отсчёт)
@@ -36,9 +37,9 @@ function fmt(sec) {
 function renderSettings() {
   $("work").textContent = fmt(settings.work);
   $("rest").textContent = fmt(settings.rest);
-  $("total").textContent = settings.total + " мин";
+  $("total").textContent = settings.total + " min";
   const rounds = Math.floor(settings.total * 60 / (settings.work + settings.rest));
-  $("rounds").textContent = "≈ " + rounds + " раундов";
+  $("rounds").textContent = "≈ " + rounds + " rounds";
   store.set("wt_" + TYPE, { work: settings.work, rest: settings.rest, total: settings.total });
 }
 function step(key, dir) {
@@ -88,7 +89,7 @@ async function decode(item) {
   if (item.blob) buf = await item.blob.arrayBuffer();
   else {
     const r = await fetch(item.file);
-    if (!r.ok) throw new Error("нет файла " + item.file);
+    if (!r.ok) throw new Error("missing file " + item.file);
     buf = await r.arrayBuffer();
   }
   const ab = await new Promise((ok, bad) => getDecodeCtx().decodeAudioData(buf, ok, bad));
@@ -189,7 +190,7 @@ function invalidate() {
   if (audioUrl) { URL.revokeObjectURL(audioUrl); audioUrl = null; }
   player.removeAttribute("src");
   $("save").hidden = true;
-  $("start").textContent = "Старт";
+  $("start").textContent = "Start";
   $("phase").textContent = "";
   $("clock").textContent = "";
   document.body.className = "";
@@ -199,41 +200,41 @@ async function start() {
   const btn = $("start");
   btn.disabled = true;
   try {
-    const blob = await render((p) => { btn.textContent = "Собираю… " + Math.round(p * 100) + "%"; });
+    const blob = await render((p) => { btn.textContent = "Preparing… " + Math.round(p * 100) + "%"; });
     audioUrl = URL.createObjectURL(blob);
     player.src = audioUrl;
     const a = $("save");
     a.href = audioUrl;
-    a.download = `${PRESETS[TYPE].name} ${fmt(settings.work)}-${fmt(settings.rest)} ${settings.total}мин.wav`.replace(/:/g, ".");
+    a.download = `${PRESETS[TYPE].name} ${fmt(settings.work)}-${fmt(settings.rest)} ${settings.total}min.wav`.replace(/:/g, ".");
     a.hidden = false;
     if ("mediaSession" in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
         title: `${PRESETS[TYPE].name}: ${fmt(settings.work)} / ${fmt(settings.rest)}`,
-        artist: `${settings.total} мин`,
+        artist: `${settings.total} min`,
       });
     }
     await player.play();
   } catch (e) {
-    $("phase").textContent = "Ошибка: " + e.message;
+    $("phase").textContent = "Error: " + e.message;
     invalidate();
   } finally {
     btn.disabled = false;
   }
 }
 $("start").addEventListener("click", start);
-player.addEventListener("play", () => { $("start").textContent = "Пауза"; });
-player.addEventListener("pause", () => { if (audioUrl) $("start").textContent = "Продолжить"; });
-player.addEventListener("ended", () => { $("phase").textContent = "Готово!"; $("start").textContent = "Ещё раз"; });
+player.addEventListener("play", () => { $("start").textContent = "Pause"; });
+player.addEventListener("pause", () => { if (audioUrl) $("start").textContent = "Resume"; });
+player.addEventListener("ended", () => { $("phase").textContent = "Done!"; $("start").textContent = "Again"; });
 
 function tick() {
   if (audioUrl && schedule.length) {
     const t = player.currentTime;
     const seg = schedule.find((s) => t < s.t1) || schedule[schedule.length - 1];
-    const label = { lead: "Приготовься", work: "РАБОТА", rest: "Отдых" }[seg.kind];
-    $("phase").textContent = seg.round ? `${label} · раунд ${seg.round}` : label;
+    const label = { lead: "Get ready", work: "WORK", rest: "Rest" }[seg.kind];
+    $("phase").textContent = seg.round ? `${label} · round ${seg.round}` : label;
     $("clock").textContent = fmt(seg.t1 - t);
     document.body.className = player.ended ? "" : seg.kind;
-    $("left").textContent = "осталось " + fmt(schedule[schedule.length - 1].t1 - t);
+    $("left").textContent = "left " + fmt(schedule[schedule.length - 1].t1 - t);
   }
   requestAnimationFrame(tick);
 }
@@ -248,11 +249,11 @@ async function cacheAll() {
     const c = await caches.open(MUSIC_CACHE);
     for (const f of files) {
       if (!(await c.match(f))) await c.add(f);
-      b.textContent = `Сохраняю музыку… ${++done}/${files.length}`;
+      b.textContent = `Saving music… ${++done}/${files.length}`;
     }
-    b.textContent = "Музыка сохранена — работает без интернета ✓";
+    b.textContent = "Music saved — works offline ✓";
   } catch (e) {
-    b.textContent = "Не удалось сохранить, нужен интернет";
+    b.textContent = "Could not save — internet needed";
     b.disabled = false;
   }
 }
@@ -262,7 +263,7 @@ async function checkOffline() {
     const files = [...lib[TYPE], ...lib.relax].map((x) => x.file);
     let have = 0;
     for (const f of files) if (await c.match(f)) have++;
-    if (have === files.length) { $("offline").textContent = "Музыка сохранена — работает без интернета ✓"; $("offline").disabled = true; }
+    if (have === files.length) { $("offline").textContent = "Music saved — works offline ✓"; $("offline").disabled = true; }
   } catch (e) {}
 }
 $("offline").addEventListener("click", cacheAll);
@@ -289,7 +290,7 @@ async function loadMy() {
   } catch (e) {}
   for (const role of ["work", "rest"]) {
     const n = my[role].length;
-    $("my" + role + "n").textContent = n ? `своих треков: ${n}` : "играет встроенная музыка";
+    $("my" + role + "n").textContent = n ? `my tracks: ${n}` : "built-in music";
     $("clr" + role).hidden = !n;
   }
 }
@@ -301,11 +302,11 @@ async function addMy(role, files) {
       for (const f of files) tx.objectStore("tracks").add({ type: TYPE, role, name: f.name, blob: f });
       tx.oncomplete = ok; tx.onerror = () => bad(tx.error);
     });
-  } catch (e) { alert("Не удалось сохранить треки: " + e.message); }
+  } catch (e) { alert("Could not save tracks: " + e.message); }
   invalidate(); loadMy();
 }
 async function clearMy(role) {
-  if (!confirm("Убрать свои треки и вернуть встроенную музыку?")) return;
+  if (!confirm("Remove my tracks and use built-in music?")) return;
   try {
     const db = await idb();
     await new Promise((ok, bad) => {

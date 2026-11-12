@@ -207,6 +207,58 @@
    "bpm": 115
   }
  ],
+ "stretch": [
+  {
+   "file": "music/stretch/01.mp3",
+   "title": "Morning",
+   "bpm": 60
+  },
+  {
+   "file": "music/stretch/02.mp3",
+   "title": "Midnight Tale",
+   "bpm": 73
+  },
+  {
+   "file": "music/stretch/03.mp3",
+   "title": "Clear Air",
+   "bpm": 68
+  },
+  {
+   "file": "music/stretch/04.mp3",
+   "title": "Windswept",
+   "bpm": 79
+  },
+  {
+   "file": "music/stretch/05.mp3",
+   "title": "Laid Back Guitars",
+   "bpm": 85
+  },
+  {
+   "file": "music/stretch/06.mp3",
+   "title": "Almost Bliss",
+   "bpm": 90
+  },
+  {
+   "file": "music/stretch/07.mp3",
+   "title": "Last Kiss Goodnight",
+   "bpm": 60
+  },
+  {
+   "file": "music/stretch/08.mp3",
+   "title": "Sunshine (version 2)",
+   "bpm": 79
+  },
+  {
+   "file": "music/stretch/09.mp3",
+   "title": "Evening",
+   "bpm": 101
+  },
+  {
+   "file": "music/stretch/10.mp3",
+   "title": "Easy Lemon",
+   "bpm": 82
+  }
+ ],
  "relax": [
   {
    "file": "music/relax/01.mp3",

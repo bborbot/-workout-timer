@@ -10,7 +10,7 @@ for cat, names in t.items():
     shutil.rmtree(f"music/{cat}", ignore_errors=True)
     os.makedirs(f"music/{cat}")
     lib[cat] = []
-    target = -18 if cat == "relax" else -14
+    target = -18 if cat in ("relax", "stretch") else -14
     for i, n in enumerate(names, 1):
         fn = p[n]["filename"]
         raw = f"_src/raw/{fn}"

@@ -1,33 +1,33 @@
 <!doctype html>
-<html lang="ru"><head><meta charset="utf-8">
+<html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Силовые</title>
+<title>Strength</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Силовые">
+<meta name="apple-mobile-web-app-title" content="Strength">
 <meta name="theme-color" content="#7a3dc9">
 <link rel="apple-touch-icon" href="icons/strength-180.png">
 <link rel="manifest" href="strength.webmanifest">
 <link rel="stylesheet" href="style.css">
 </head>
 <body data-type="strength"><main>
-<a class="back" href="index.html">← все тренировки</a>
-<h1 id="title">Силовые</h1>
-<div class="row"><span class="lbl">Работа</span><button data-step="work" data-dir="-1">−</button><span class="val" id="work"></span><button data-step="work" data-dir="1">+</button></div>
-<div class="row"><span class="lbl">Отдых</span><button data-step="rest" data-dir="-1">−</button><span class="val" id="rest"></span><button data-step="rest" data-dir="1">+</button></div>
-<div class="row"><span class="lbl">Всего</span><button data-step="total" data-dir="-1">−</button><span class="val" id="total"></span><button data-step="total" data-dir="1">+</button></div>
+<a class="back" href="index.html">← all workouts</a>
+<h1 id="title">Strength</h1>
+<div class="row"><span class="lbl">Work</span><button data-step="work" data-dir="-1">−</button><span class="val" id="work"></span><button data-step="work" data-dir="1">+</button></div>
+<div class="row"><span class="lbl">Rest</span><button data-step="rest" data-dir="-1">−</button><span class="val" id="rest"></span><button data-step="rest" data-dir="1">+</button></div>
+<div class="row"><span class="lbl">Total</span><button data-step="total" data-dir="-1">−</button><span class="val" id="total"></span><button data-step="total" data-dir="1">+</button></div>
 <div id="rounds"></div>
-<button class="big" id="start">Старт</button>
+<button class="big" id="start">Start</button>
 <div id="phase"></div><div id="clock"></div><div id="left"></div>
-<a class="sub" id="save" hidden>Сохранить тренировку в «Файлы»</a>
-<button class="sub" id="offline">Сохранить музыку для работы без интернета</button>
-<h2>Моя музыка</h2>
-<p class="note">Свои песни (MP3, M4A) из «Файлов». Хранятся только в этом телефоне.</p>
-<label class="sub">+ Мои треки для работы<input type="file" id="mywork" accept="audio/*" multiple hidden></label>
-<div class="note" id="myworkn"></div><button class="sub" id="clrwork" hidden>Убрать мои треки для работы</button>
-<label class="sub">+ Мои треки для отдыха<input type="file" id="myrest" accept="audio/*" multiple hidden></label>
-<div class="note" id="myrestn"></div><button class="sub" id="clrrest" hidden>Убрать мои треки для отдыха</button>
-<p class="note">Перед каждой сменой — пик-пик-пик (3-2-1), на смене — длинный сигнал: высокий — работа, низкий — отдых.
-Встроенная музыка: Kevin MacLeod, <a href="credits.html">список треков</a>.</p>
+<a class="sub" id="save" hidden>Save workout to Files</a>
+<button class="sub" id="offline">Save music for offline use</button>
+<h2>My music</h2>
+<p class="note">Your own songs (MP3, M4A) from Files. Stored on this phone only.</p>
+<label class="sub">+ My tracks for work<input type="file" id="mywork" accept="audio/*" multiple hidden></label>
+<div class="note" id="myworkn"></div><button class="sub" id="clrwork" hidden>Remove my work tracks</button>
+<label class="sub">+ My tracks for rest<input type="file" id="myrest" accept="audio/*" multiple hidden></label>
+<div class="note" id="myrestn"></div><button class="sub" id="clrrest" hidden>Remove my rest tracks</button>
+<p class="note">Before each change: beep-beep-beep (3-2-1), then a long tone: high — work, low — rest.
+Built-in music: Kevin MacLeod, <a href="credits.html">track list</a>.</p>
 <audio id="player" preload="auto"></audio>
 </main><script src="app.js"></script></body></html>

@@ -5,10 +5,11 @@ import json
 from PIL import Image, ImageDraw, ImageFont
 
 APPS = {
-    "jumps":    ("Прыжки",       "#d93636", "J"),
-    "bag":      ("Груша",        "#1f5fd6", "B"),
-    "animal":   ("Animal moves", "#1d8a4e", "A"),
-    "strength": ("Силовые",      "#7a3dc9", "S"),
+    "jumps":    ("Power",        "#d93636", "P"),
+    "bag":      ("Endurance",    "#1f5fd6", "E"),
+    "animal":   ("Coordination", "#1d8a4e", "C"),
+    "strength": ("Strength",     "#7a3dc9", "S"),
+    "stretch":  ("Stretching",   "#0b7285", "St"),
 }
 FONT = "C:/Windows/Fonts/arialbd.ttf"
 
@@ -24,7 +25,7 @@ def icon(path, color, letter, size):
 
 
 PAGE = """<!doctype html>
-<html lang="ru"><head><meta charset="utf-8">
+<html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{name}</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,42 +37,42 @@ PAGE = """<!doctype html>
 <link rel="stylesheet" href="style.css">
 </head>
 <body data-type="{key}"><main>
-<a class="back" href="index.html">← все тренировки</a>
+<a class="back" href="index.html">← all workouts</a>
 <h1 id="title">{name}</h1>
-<div class="row"><span class="lbl">Работа</span><button data-step="work" data-dir="-1">−</button><span class="val" id="work"></span><button data-step="work" data-dir="1">+</button></div>
-<div class="row"><span class="lbl">Отдых</span><button data-step="rest" data-dir="-1">−</button><span class="val" id="rest"></span><button data-step="rest" data-dir="1">+</button></div>
-<div class="row"><span class="lbl">Всего</span><button data-step="total" data-dir="-1">−</button><span class="val" id="total"></span><button data-step="total" data-dir="1">+</button></div>
+<div class="row"><span class="lbl">Work</span><button data-step="work" data-dir="-1">−</button><span class="val" id="work"></span><button data-step="work" data-dir="1">+</button></div>
+<div class="row"><span class="lbl">Rest</span><button data-step="rest" data-dir="-1">−</button><span class="val" id="rest"></span><button data-step="rest" data-dir="1">+</button></div>
+<div class="row"><span class="lbl">Total</span><button data-step="total" data-dir="-1">−</button><span class="val" id="total"></span><button data-step="total" data-dir="1">+</button></div>
 <div id="rounds"></div>
-<button class="big" id="start">Старт</button>
+<button class="big" id="start">Start</button>
 <div id="phase"></div><div id="clock"></div><div id="left"></div>
-<a class="sub" id="save" hidden>Сохранить тренировку в «Файлы»</a>
-<button class="sub" id="offline">Сохранить музыку для работы без интернета</button>
-<h2>Моя музыка</h2>
-<p class="note">Свои песни (MP3, M4A) из «Файлов». Хранятся только в этом телефоне.</p>
-<label class="sub">+ Мои треки для работы<input type="file" id="mywork" accept="audio/*" multiple hidden></label>
-<div class="note" id="myworkn"></div><button class="sub" id="clrwork" hidden>Убрать мои треки для работы</button>
-<label class="sub">+ Мои треки для отдыха<input type="file" id="myrest" accept="audio/*" multiple hidden></label>
-<div class="note" id="myrestn"></div><button class="sub" id="clrrest" hidden>Убрать мои треки для отдыха</button>
-<p class="note">Перед каждой сменой — пик-пик-пик (3-2-1), на смене — длинный сигнал: высокий — работа, низкий — отдых.
-Встроенная музыка: Kevin MacLeod, <a href="credits.html">список треков</a>.</p>
+<a class="sub" id="save" hidden>Save workout to Files</a>
+<button class="sub" id="offline">Save music for offline use</button>
+<h2>My music</h2>
+<p class="note">Your own songs (MP3, M4A) from Files. Stored on this phone only.</p>
+<label class="sub">+ My tracks for work<input type="file" id="mywork" accept="audio/*" multiple hidden></label>
+<div class="note" id="myworkn"></div><button class="sub" id="clrwork" hidden>Remove my work tracks</button>
+<label class="sub">+ My tracks for rest<input type="file" id="myrest" accept="audio/*" multiple hidden></label>
+<div class="note" id="myrestn"></div><button class="sub" id="clrrest" hidden>Remove my rest tracks</button>
+<p class="note">Before each change: beep-beep-beep (3-2-1), then a long tone: high — work, low — rest.
+Built-in music: Kevin MacLeod, <a href="credits.html">track list</a>.</p>
 <audio id="player" preload="auto"></audio>
 </main><script src="app.js"></script></body></html>
 """
 
 INDEX = """<!doctype html>
-<html lang="ru"><head><meta charset="utf-8">
+<html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Тренировки</title>
+<title>Workouts</title>
 <link rel="apple-touch-icon" href="icons/jumps-180.png">
 <link rel="stylesheet" href="style.css">
 </head><body><main>
-<h1>Тренировки</h1>
+<h1>Workouts</h1>
 <div class="menu">
 {items}
 </div>
-<p class="note">Откройте нужную тренировку в Safari, нажмите «Поделиться» → «На экран „Домой“» — появится отдельная иконка.
-Внутри нажмите «Сохранить музыку…», и тренировка будет работать без интернета.</p>
-<p class="note"><a href="credits.html">Музыка и лицензии</a></p>
+<p class="note">Open a workout in Safari, tap Share → Add to Home Screen to get its own icon.
+Inside, tap “Save music for offline use” and the workout will run without internet.</p>
+<p class="note"><a href="credits.html">Music and licenses</a></p>
 </main>
 <script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {{}});</script>
 </body></html>
@@ -93,7 +94,8 @@ def main():
         items.append(f'<a href="{key}.html"><img src="icons/{key}-180.png" alt="">{name}</a>')
     open("index.html", "w", encoding="utf-8").write(INDEX.format(items="\n".join(items)))
 
-    names = {"jumps": "Прыжки", "bag": "Груша", "animal": "Animal moves", "strength": "Силовые", "relax": "Отдых"}
+    names = {"jumps": "Power", "bag": "Endurance", "animal": "Coordination", "strength": "Strength",
+             "stretch": "Stretching", "relax": "Rest"}
     rows = []
     for cat, tracks in lib.items():
         rows.append(f"<h2>{names[cat]}</h2><ul>")
@@ -103,12 +105,12 @@ def main():
                         f'<a href="https://creativecommons.org/licenses/by/4.0/">creativecommons.org/licenses/by/4.0/</a></li>')
         rows.append("</ul>")
     open("credits.html", "w", encoding="utf-8").write(
-        '<!doctype html><html lang="ru"><head><meta charset="utf-8">'
-        '<meta name="viewport" content="width=device-width, initial-scale=1"><title>Музыка</title>'
+        '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width, initial-scale=1"><title>Music</title>'
         '<link rel="stylesheet" href="style.css"></head><body><main>'
-        '<a class="back" href="index.html">← назад</a><h1>Музыка</h1>'
-        '<p class="note">Вся музыка — Kevin MacLeod (incompetech.com), лицензия CC BY 4.0. '
-        'Треки сжаты в моно и выровнены по громкости.</p>' + "\n".join(rows) + "</main></body></html>")
+        '<a class="back" href="index.html">← back</a><h1>Music</h1>'
+        '<p class="note">All music by Kevin MacLeod (incompetech.com), license CC BY 4.0. '
+        'Tracks are converted to mono and loudness-normalized.</p>' + "\n".join(rows) + "</main></body></html>")
     print("generated")
 
 
