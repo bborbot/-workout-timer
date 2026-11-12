@@ -88,7 +88,7 @@ INDEX = """<!doctype html>
 </head><body><main>
 <h1>Workouts</h1>
 <div id="today"></div>
-<a class="sub guide" href="guides.html">📖 All workouts explained — what each one means</a>
+<a class="sub guide short" href="guides.html">📖 What each workout means</a>
 <details class="intro"><summary>How recommendations, plan and marks work</summary>
 <p>Recommended per week for a healthy adult (based on WHO guidance: 150–300 min of moderate
 or 75–150 min of vigorous activity, strength at least 2 days). Set your own weekly plan under each workout, or make a weekly schedule — then the plan is counted from it.

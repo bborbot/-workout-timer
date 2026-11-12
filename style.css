@@ -110,3 +110,15 @@ details.intro p { color:var(--muted); font-size:15px; margin:0 0 10px; }
 
 details.disclaimer summary { cursor:pointer; }
 details.disclaimer p { margin:6px 0 2px; font-weight:400; }
+
+.tday { padding:6px 12px 8px; margin:0 0 10px; border-width:2px; }
+.tday.tmini { padding:8px 12px; font-size:15px; color:var(--muted); border-width:1px; border-color:var(--line); }
+.tday.tmini b { color:var(--fg); font-size:17px; } .tday a { color:var(--accent); text-decoration:none; font-weight:700; }
+.thead { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:2px; }
+.thead b { font-size:20px; } .thead a { font-size:15px; }
+.tday .tslot { margin:4px 0; } .tday .tsn { width:62px; font-size:14px; padding-top:4px; }
+.tday .chip { padding:4px 9px; font-size:14px; }
+.tmr { font-size:14px; color:var(--muted); margin-top:4px; }
+
+.tday a.chip { color:#fff; font-weight:600; }
+a.sub.guide.short { padding:9px; font-size:15px; margin:0 0 10px; }

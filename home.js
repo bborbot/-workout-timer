@@ -32,8 +32,7 @@ function plan() {
 function renderToday() {
   const box = document.getElementById("today"), s = sched(), di = (new Date().getDay() + 6) % 7;
   if (!schedCounts()) {
-    box.innerHTML = `<div class="tday"><h2>Today</h2><p class="note">No schedule yet.</p>
-      <a class="sub" href="schedule.html">🗓 Make a weekly schedule</a></div>`;
+    box.innerHTML = `<div class="tday tmini"><b>Today</b> · no schedule yet · <a href="schedule.html">🗓 make one</a></div>`;
     return;
   }
   const left = readLog().filter((x) => x.d === ymd(new Date())).map((x) => x.t);
@@ -44,9 +43,9 @@ function renderToday() {
       return `<a class="chip${done ? " done" : ""}" style="background:${H.apps[k].color}" href="${k}.html">${done ? "✓ " : ""}${H.apps[k].short}</a>`;
     }).join("") + "</span></div>").join("") || '<p class="note">Rest day.</p>';
   const nd = (di + 1) % 7;
-  box.innerHTML = `<div class="tday"><h2>Today · ${DAYS[di]}</h2>${line(s[di] || {}, true)}
-    <h3>Tomorrow · ${DAYS[nd]}</h3>${line(s[nd] || {}, false)}
-    <a class="sub" href="schedule.html">🗓 Weekly schedule</a></div>`;
+  const tmr = SLOTS.flatMap(([sk]) => (s[nd] || {})[sk] || []).map((k) => H.apps[k].short).join(", ") || "rest";
+  box.innerHTML = `<div class="tday"><div class="thead"><b>Today · ${DAYS[di]}</b><a href="schedule.html">🗓 schedule</a></div>
+    ${line(s[di] || {}, true)}<div class="tmr">Tomorrow · ${DAYS[nd]}: ${tmr}</div></div>`;
 }
 function ymd(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
 function monday(shift) {
