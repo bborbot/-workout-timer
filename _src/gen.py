@@ -83,10 +83,12 @@ INDEX = """<!doctype html>
 </head><body><main>
 <h1>Workouts</h1>
 <p class="note">Recommended per week for a healthy adult (based on WHO guidance: 150–300 min of moderate
-or 75–150 min of vigorous activity, strength at least 2 days). Tap <b>+</b> when you did a workout today;
-a workout played to the end is marked automatically. Marks are stored on this phone only.</p>
+or 75–150 min of vigorous activity, strength at least 2 days). Set your own weekly plan under each workout.
+A workout played in the app is marked automatically with its minutes; tap <b>+</b> if you trained without the app.
+At the start of a new week you will see how last week went. Marks are stored on this phone only.</p>
 <p class="disclaimer">This is the author’s personal view, not sports or medical advice. If you have health problems
 or injuries, or the workouts are for a child, ask a doctor or a coach first.</p>
+<div id="report"></div>
 <div class="menu">
 {items}
 </div>
@@ -95,8 +97,10 @@ or injuries, or the workouts are for a child, ask a doctor or a coach first.</p>
 <div id="days"></div>
 <p class="note">Tap a coloured mark to remove it. Several workouts a day are fine, e.g. Warm-up → Strength → Stretching.
 </p>
-<p class="note">Open a workout in Safari, tap Share → Add to Home Screen to get its own icon.
-Inside, tap “Save music for offline use” and the workout will run without internet.</p>
+<p class="note"><b>Install:</b> iPhone — open this page in Safari, Share → Add to Home Screen.
+Android — open in Chrome, menu ⋮ → Install app (or Add to Home screen).
+Use this one “Workouts” icon: on iPhone, marks made in Safari and in the home-screen icon are kept separately.
+In each workout, tap “Save music for offline use” once.</p>
 <p class="note"><a href="credits.html">Music and licenses</a></p>
 </main>
 <script>window.HOME = {home};</script>
@@ -120,7 +124,9 @@ def main():
         rec, mn, goal = REC[key]
         items.append(f'<div class="card" data-key="{key}"><a href="{key}.html"><img src="icons/{key}-180.png" alt="">'
                      f'<span><b>{name}</b><small>{rec}</small></span></a>'
-                     f'<div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div></div>')
+                     f'<div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div>'
+                     f'<div class="plan">My plan: <button class="pm" data-d="-1" aria-label="less">−</button>'
+                     f'<span class="pv"></span><button class="pm" data-d="1" aria-label="more">+</button><span class="pmin"></span></div></div>')
     home = {"order": list(APPS), "apps": {k: {"name": v[0], "color": v[1], "min": REC[k][1], "goal": REC[k][2]}
                                           for k, v in APPS.items()}}
     for s in (180, 192, 512):

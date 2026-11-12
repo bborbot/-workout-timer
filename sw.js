@@ -1,6 +1,6 @@
 // Офлайн: оболочка приложения кэшируется при установке, музыка — при первом использовании
 // или по кнопке «Сохранить музыку». Новая версия — поменять VERSION.
-const VERSION = "wt-shell-v6";
+const VERSION = "wt-shell-v7";
 const MUSIC = "wt-music-v3";
 const SHELL = ["./", "index.html", "home.js", "home.webmanifest", "warmup.html", "speed.html", "jumps.html", "bag.html", "animal.html", "strength.html", "stretch.html", "credits.html",
   "app.js", "style.css", "music/library.json"];

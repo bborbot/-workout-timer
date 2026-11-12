@@ -26,6 +26,7 @@ const store = {
 };
 
 let lib = null;
+let session = null;   // текущий прогон для отметки: {id, d}
 let settings = Object.assign({}, PRESETS[TYPE], store.get("wt_" + TYPE, {}));
 let schedule = [];         // [{kind:'lead'|'work'|'rest', t0, t1, round}]
 let audioUrl = null;
@@ -191,6 +192,7 @@ const player = $("player");
 function invalidate() {
   if (audioUrl) { URL.revokeObjectURL(audioUrl); audioUrl = null; }
   player.removeAttribute("src");
+  session = null;
   $("save").hidden = true;
   $("start").textContent = "Start";
   $("phase").textContent = "";
@@ -224,16 +226,32 @@ async function start() {
   }
 }
 $("start").addEventListener("click", start);
-player.addEventListener("play", () => { $("start").textContent = "Pause"; });
-player.addEventListener("pause", () => { if (audioUrl) $("start").textContent = "Resume"; });
-player.addEventListener("ended", () => {
-  $("phase").textContent = "Done! Marked for today ✓"; $("start").textContent = "Again";
-  try {   // отметка на главной (home.js читает тот же ключ wt_log)
-    const d = new Date(), day = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
-    const log = JSON.parse(localStorage.getItem("wt_log") || "[]"); log.push({ d: day, t: TYPE });
+// Отметка тренировки для главной (home.js читает тот же ключ wt_log): одна запись на прогон, минуты по факту.
+function today() {
+  const d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+function logSession(final) {
+  if (!session) return;
+  const m = final ? settings.total : Math.floor(Math.max(0, player.currentTime - LEAD) / 60);
+  if (!final && m < 1) return;
+  try {
+    const log = JSON.parse(localStorage.getItem("wt_log") || "[]");
+    const i = log.findIndex((x) => x.id === session.id), e = { d: session.d, t: TYPE, m, id: session.id };
+    if (i >= 0) log[i] = e; else log.push(e);
     localStorage.setItem("wt_log", JSON.stringify(log));
   } catch (e) {}
+}
+player.addEventListener("play", () => {
+  $("start").textContent = "Pause";
+  if (!session || player.currentTime < 1) session = { id: Date.now(), d: today() };
 });
+player.addEventListener("pause", () => { if (audioUrl && !player.ended) { $("start").textContent = "Resume"; logSession(false); } });
+player.addEventListener("ended", () => {
+  logSession(true);
+  $("phase").textContent = "Done! Marked for today ✓"; $("start").textContent = "Again";
+});
+document.addEventListener("visibilitychange", () => { if (document.hidden && !player.ended) logSession(false); });
+window.addEventListener("pagehide", () => { if (!player.ended) logSession(false); });
 
 function tick() {
   if (audioUrl && schedule.length) {

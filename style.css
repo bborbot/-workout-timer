@@ -59,3 +59,15 @@ label.sub { cursor:pointer; }
 .none { color:var(--muted); }
 .disclaimer { font-size:15px; font-weight:600; color:var(--fg); border-left:4px solid var(--lead); padding:6px 10px;
   background:var(--card); border-radius:6px; }
+
+.card { flex-wrap:wrap; }
+.plan { flex-basis:100%; display:flex; align-items:center; gap:8px; padding:0 0 10px 84px; font-size:15px; color:var(--muted); flex-wrap:wrap; }
+.pm { width:40px; height:36px; border-radius:10px; border:1px solid var(--line); background:var(--bg); color:var(--fg);
+  font-size:22px; font-weight:700; line-height:1; }
+.pv { font-weight:700; color:var(--fg); min-width:84px; text-align:center; }
+.rep { background:var(--card); border:2px solid var(--accent); border-radius:16px; padding:6px 14px 4px; margin:14px 0; }
+.rep h2 { margin:8px 0 2px; }
+.rep table { width:100%; border-collapse:collapse; font-size:16px; }
+.rep td { padding:5px 4px; border-top:1px solid var(--line); }
+.rep td:last-child, .rep td:nth-child(3) { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
+.yes { color:var(--rest); font-size:20px; } .no { color:var(--work); font-size:20px; } .na { color:var(--muted); }

@@ -10,26 +10,30 @@
 </head><body><main>
 <h1>Workouts</h1>
 <p class="note">Recommended per week for a healthy adult (based on WHO guidance: 150–300 min of moderate
-or 75–150 min of vigorous activity, strength at least 2 days). Tap <b>+</b> when you did a workout today;
-a workout played to the end is marked automatically. Marks are stored on this phone only.</p>
+or 75–150 min of vigorous activity, strength at least 2 days). Set your own weekly plan under each workout.
+A workout played in the app is marked automatically with its minutes; tap <b>+</b> if you trained without the app.
+At the start of a new week you will see how last week went. Marks are stored on this phone only.</p>
 <p class="disclaimer">This is the author’s personal view, not sports or medical advice. If you have health problems
 or injuries, or the workouts are for a child, ask a doctor or a coach first.</p>
+<div id="report"></div>
 <div class="menu">
-<div class="card" data-key="warmup"><a href="warmup.html"><img src="icons/warmup-180.png" alt=""><span><b>Warm-up</b><small>before each workout · 5–10 min</small></span></a><div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div></div>
-<div class="card" data-key="jumps"><a href="jumps.html"><img src="icons/jumps-180.png" alt=""><span><b>Power</b><small>1–2× a week · 15–20 min</small></span></a><div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div></div>
-<div class="card" data-key="speed"><a href="speed.html"><img src="icons/speed-180.png" alt=""><span><b>Speed & Reaction</b><small>1× a week · 10–15 min</small></span></a><div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div></div>
-<div class="card" data-key="bag"><a href="bag.html"><img src="icons/bag-180.png" alt=""><span><b>Endurance</b><small>2–3× a week · 20–40 min</small></span></a><div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div></div>
-<div class="card" data-key="animal"><a href="animal.html"><img src="icons/animal-180.png" alt=""><span><b>Coordination / Balance</b><small>2× a week · 15–20 min</small></span></a><div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div></div>
-<div class="card" data-key="strength"><a href="strength.html"><img src="icons/strength-180.png" alt=""><span><b>Strength</b><small>2–3× a week, not on consecutive days · 30–45 min</small></span></a><div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div></div>
-<div class="card" data-key="stretch"><a href="stretch.html"><img src="icons/stretch-180.png" alt=""><span><b>Stretching</b><small>2–3× a week or after each workout · 10–20 min</small></span></a><div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div></div>
+<div class="card" data-key="warmup"><a href="warmup.html"><img src="icons/warmup-180.png" alt=""><span><b>Warm-up</b><small>before each workout · 5–10 min</small></span></a><div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div><div class="plan">My plan: <button class="pm" data-d="-1" aria-label="less">−</button><span class="pv"></span><button class="pm" data-d="1" aria-label="more">+</button><span class="pmin"></span></div></div>
+<div class="card" data-key="jumps"><a href="jumps.html"><img src="icons/jumps-180.png" alt=""><span><b>Power</b><small>1–2× a week · 15–20 min</small></span></a><div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div><div class="plan">My plan: <button class="pm" data-d="-1" aria-label="less">−</button><span class="pv"></span><button class="pm" data-d="1" aria-label="more">+</button><span class="pmin"></span></div></div>
+<div class="card" data-key="speed"><a href="speed.html"><img src="icons/speed-180.png" alt=""><span><b>Speed & Reaction</b><small>1× a week · 10–15 min</small></span></a><div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div><div class="plan">My plan: <button class="pm" data-d="-1" aria-label="less">−</button><span class="pv"></span><button class="pm" data-d="1" aria-label="more">+</button><span class="pmin"></span></div></div>
+<div class="card" data-key="bag"><a href="bag.html"><img src="icons/bag-180.png" alt=""><span><b>Endurance</b><small>2–3× a week · 20–40 min</small></span></a><div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div><div class="plan">My plan: <button class="pm" data-d="-1" aria-label="less">−</button><span class="pv"></span><button class="pm" data-d="1" aria-label="more">+</button><span class="pmin"></span></div></div>
+<div class="card" data-key="animal"><a href="animal.html"><img src="icons/animal-180.png" alt=""><span><b>Coordination / Balance</b><small>2× a week · 15–20 min</small></span></a><div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div><div class="plan">My plan: <button class="pm" data-d="-1" aria-label="less">−</button><span class="pv"></span><button class="pm" data-d="1" aria-label="more">+</button><span class="pmin"></span></div></div>
+<div class="card" data-key="strength"><a href="strength.html"><img src="icons/strength-180.png" alt=""><span><b>Strength</b><small>2–3× a week, not on consecutive days · 30–45 min</small></span></a><div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div><div class="plan">My plan: <button class="pm" data-d="-1" aria-label="less">−</button><span class="pv"></span><button class="pm" data-d="1" aria-label="more">+</button><span class="pmin"></span></div></div>
+<div class="card" data-key="stretch"><a href="stretch.html"><img src="icons/stretch-180.png" alt=""><span><b>Stretching</b><small>2–3× a week or after each workout · 10–20 min</small></span></a><div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div><div class="plan">My plan: <button class="pm" data-d="-1" aria-label="less">−</button><span class="pv"></span><button class="pm" data-d="1" aria-label="more">+</button><span class="pmin"></span></div></div>
 </div>
 <div class="wkbar"><button id="prev" aria-label="previous week">‹</button><h2 id="wk">This week</h2><button id="next" aria-label="next week">›</button></div>
 <p class="sum" id="sum"></p>
 <div id="days"></div>
 <p class="note">Tap a coloured mark to remove it. Several workouts a day are fine, e.g. Warm-up → Strength → Stretching.
 </p>
-<p class="note">Open a workout in Safari, tap Share → Add to Home Screen to get its own icon.
-Inside, tap “Save music for offline use” and the workout will run without internet.</p>
+<p class="note"><b>Install:</b> iPhone — open this page in Safari, Share → Add to Home Screen.
+Android — open in Chrome, menu ⋮ → Install app (or Add to Home screen).
+Use this one “Workouts” icon: on iPhone, marks made in Safari and in the home-screen icon are kept separately.
+In each workout, tap “Save music for offline use” once.</p>
 <p class="note"><a href="credits.html">Music and licenses</a></p>
 </main>
 <script>window.HOME = {"order": ["warmup", "jumps", "speed", "bag", "animal", "strength", "stretch"], "apps": {"warmup": {"name": "Warm-up", "color": "#c2410c", "min": 0, "goal": ""}, "jumps": {"name": "Power", "color": "#d93636", "min": 1, "goal": "1–2"}, "speed": {"name": "Speed & Reaction", "color": "#a16207", "min": 1, "goal": "1"}, "bag": {"name": "Endurance", "color": "#1f5fd6", "min": 2, "goal": "2–3"}, "animal": {"name": "Coordination / Balance", "color": "#1d8a4e", "min": 2, "goal": "2"}, "strength": {"name": "Strength", "color": "#7a3dc9", "min": 2, "goal": "2–3"}, "stretch": {"name": "Stretching", "color": "#0b7285", "min": 2, "goal": "2–3"}}};</script>
