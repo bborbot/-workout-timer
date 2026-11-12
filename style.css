@@ -103,3 +103,7 @@ a.howto { margin-left:auto; color:var(--accent); font-weight:700; text-decoratio
 .gall summary { display:flex; align-items:center; gap:12px; list-style:none; }
 .gall summary::-webkit-details-marker { display:none; }
 .gall summary img { width:44px; height:44px; border-radius:10px; }
+
+details.intro { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:0 12px; margin:0 0 12px; }
+details.intro summary { padding:10px 0; font-size:16px; font-weight:700; color:var(--muted); cursor:pointer; }
+details.intro p { color:var(--muted); font-size:15px; margin:0 0 10px; }
