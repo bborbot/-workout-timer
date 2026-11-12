@@ -71,3 +71,13 @@ label.sub { cursor:pointer; }
 .rep td { padding:5px 4px; border-top:1px solid var(--line); }
 .rep td:last-child, .rep td:nth-child(3) { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
 .yes { color:var(--rest); font-size:20px; } .no { color:var(--work); font-size:20px; } .na { color:var(--muted); }
+
+a.sub.guide { font-weight:700; font-size:17px; margin:4px 0 14px; }
+.guidepage h1 { margin-bottom:10px; }
+.guidepage .lead { font-size:19px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:4px 14px; margin-bottom:12px; }
+.guidepage details { background:var(--card); border:1px solid var(--line); border-radius:14px; margin-bottom:10px; padding:0 14px; }
+.guidepage summary { font-size:19px; font-weight:700; padding:14px 0; cursor:pointer; list-style-position:inside; }
+.guidepage details[open] { padding-bottom:6px; }
+.guidepage ul, .guidepage ol { padding-left:22px; margin:6px 0; }
+.guidepage li { margin:6px 0; }
+.guidepage .disclaimer { margin-top:16px; }

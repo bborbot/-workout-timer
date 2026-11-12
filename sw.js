@@ -1,8 +1,8 @@
 // Офлайн: оболочка приложения кэшируется при установке, музыка — при первом использовании
 // или по кнопке «Сохранить музыку». Новая версия — поменять VERSION.
-const VERSION = "wt-shell-v7";
+const VERSION = "wt-shell-v8";
 const MUSIC = "wt-music-v3";
-const SHELL = ["./", "index.html", "home.js", "home.webmanifest", "warmup.html", "speed.html", "jumps.html", "bag.html", "animal.html", "strength.html", "stretch.html", "credits.html",
+const SHELL = ["./", "index.html", "home.js", "home.webmanifest", "warmup.html", "speed.html", "jumps.html", "bag.html", "animal.html", "strength.html", "stretch.html", "credits.html", "warmup-guide.html", "jumps-guide.html", "speed-guide.html", "bag-guide.html", "animal-guide.html", "strength-guide.html", "stretch-guide.html",
   "app.js", "style.css", "music/library.json"];
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(VERSION).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));

@@ -1,7 +1,9 @@
 """Генерирует страницы, манифесты, иконки и страницу авторов музыки.
 Запуск из корня: python -X utf8 _src/gen.py
 """
-import json
+import html, json, re, sys
+sys.path.insert(0, "_src")
+from guides import GUIDES
 from PIL import Image, ImageDraw, ImageFont
 
 APPS = {
@@ -51,6 +53,7 @@ PAGE = """<!doctype html>
 <body data-type="{key}"><main>
 <a class="back" href="index.html">← all workouts</a>
 <h1 id="title">{name}</h1>
+<a class="sub guide" href="{key}-guide.html">📖 How to do it</a>
 <div class="row"><span class="lbl">Work</span><button data-step="work" data-dir="-1">−</button><span class="val" id="work"></span><button data-step="work" data-dir="1">+</button></div>
 <div class="row"><span class="lbl">Rest</span><button data-step="rest" data-dir="-1">−</button><span class="val" id="rest"></span><button data-step="rest" data-dir="1">+</button></div>
 <div class="row"><span class="lbl">Total</span><button data-step="total" data-dir="-1">−</button><span class="val" id="total"></span><button data-step="total" data-dir="1">+</button></div>
@@ -109,6 +112,54 @@ In each workout, tap “Save music for offline use” once.</p>
 """
 
 
+def inline(t):
+    t = html.escape(t, quote=False)
+    t = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", t)
+    return re.sub(r"\*(.+?)\*", r"<i>\1</i>", t)
+
+
+def block(text):
+    out, lst = [], None
+    for line in text.split("\n") + [""]:
+        m_ul, m_ol = line.startswith("- "), re.match(r"\d+\. ", line)
+        kind = "ul" if m_ul else "ol" if m_ol else None
+        if lst and kind != lst:
+            out.append(f"</{lst}>"); lst = None
+        if kind:
+            if not lst:
+                out.append(f"<{kind}>"); lst = kind
+            out.append("<li>" + inline(line[2:] if m_ul else line[m_ol.end():]) + "</li>")
+        elif line.strip():
+            out.append("<p>" + inline(line) + "</p>")
+    return "\n".join(out)
+
+
+GUIDE = """<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{name} — how to</title>
+<link rel="stylesheet" href="style.css">
+</head><body><main class="guidepage">
+<a class="back" href="{key}.html">← back to the timer</a>
+<h1>{name}</h1>
+{body}
+<p class="disclaimer">This is the author’s personal view, not sports or medical advice. If you have health problems
+or injuries, or the workouts are for a child, ask a doctor or a coach first.</p>
+<a class="sub" href="{key}.html">Back to the timer</a>
+</main></body></html>
+"""
+
+
+def guide_page(key, name):
+    parts = []
+    for i, (title, text) in enumerate(GUIDES[key]):
+        if i == 0:
+            parts.append(f'<section class="lead">{block(text)}</section>')
+        else:
+            parts.append(f"<details><summary>{inline(title)}</summary>{block(text)}</details>")
+    open(f"{key}-guide.html", "w", encoding="utf-8").write(GUIDE.format(key=key, name=name, body="\n".join(parts)))
+
+
 def main():
     lib = json.load(open("music/library.json", encoding="utf-8"))
     items = []
@@ -116,6 +167,7 @@ def main():
         for s in (180, 192, 512):
             icon(f"icons/{key}-{s}.png", color, letter, s)
         open(f"{key}.html", "w", encoding="utf-8").write(PAGE.format(key=key, name=name, color=color))
+        guide_page(key, name)
         man = {"name": name, "short_name": name, "start_url": f"{key}.html", "scope": "./",
                "display": "standalone", "background_color": "#0e0e11", "theme_color": color,
                "icons": [{"src": f"icons/{key}-192.png", "sizes": "192x192", "type": "image/png"},
