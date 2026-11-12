@@ -31,3 +31,5 @@ body.lead #phase, body.lead #clock { color:var(--lead); }
 .note { color:var(--muted); font-size:15px; }
 a.back { color:var(--accent); text-decoration:none; font-size:17px; }
 audio { display:none; }
+h2 { font-size:22px; margin:26px 0 4px; }
+label.sub { cursor:pointer; }

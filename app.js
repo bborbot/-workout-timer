@@ -14,6 +14,7 @@ const SR = 22050;          // частота дорожки: моно 22 кГц 
 const LEAD = 6;            // секунд до первого раунда (спокойная музыка + отсчёт)
 const FADE = 0.25;         // плавность на стыках, с
 const MUSIC_UNDER_BEEP = 0.45;
+const MUSIC_CACHE = "wt-music-v2";
 
 const $ = (id) => document.getElementById(id);
 const store = {
@@ -82,10 +83,14 @@ function getDecodeCtx() {
   }
   return decodeCtx;
 }
-async function decode(url) {
-  const r = await fetch(url);
-  if (!r.ok) throw new Error("нет файла " + url);
-  const buf = await r.arrayBuffer();
+async function decode(item) {
+  let buf;
+  if (item.blob) buf = await item.blob.arrayBuffer();
+  else {
+    const r = await fetch(item.file);
+    if (!r.ok) throw new Error("нет файла " + item.file);
+    buf = await r.arrayBuffer();
+  }
   const ab = await new Promise((ok, bad) => getDecodeCtx().decodeAudioData(buf, ok, bad));
   return ab.getChannelData(0);
 }
@@ -102,7 +107,7 @@ async function take(pl, n) {
   const out = new Float32Array(n);
   let k = 0;
   while (k < n) {
-    if (!pl.data) pl.data = await decode(pl.order[pl.idx % pl.order.length].file);
+    if (!pl.data) pl.data = await decode(pl.order[pl.idx % pl.order.length]);
     const left = pl.data.length - pl.pos;
     const m = Math.min(left, n - k);
     out.set(pl.data.subarray(pl.pos, pl.pos + m), k);
@@ -132,7 +137,7 @@ async function render(progress) {
   const total = schedule[schedule.length - 1].t1;
   const n = Math.round(total * SR);
   const pcm = new Int16Array(n);
-  const work = playlist(lib[TYPE]), rest = playlist(lib.relax);
+  const work = playlist(my.work.length ? my.work : lib[TYPE]), rest = playlist(my.rest.length ? my.rest : lib.relax);
   const fadeN = Math.round(FADE * SR);
   const changes = [];                          // моменты смен и что начинается
   for (const seg of schedule) {
@@ -204,7 +209,7 @@ async function start() {
     if ("mediaSession" in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
         title: `${PRESETS[TYPE].name}: ${fmt(settings.work)} / ${fmt(settings.rest)}`,
-        artist: `${settings.total} мин · музыка Kevin MacLeod`,
+        artist: `${settings.total} мин`,
       });
     }
     await player.play();
@@ -240,7 +245,7 @@ async function cacheAll() {
   b.disabled = true;
   let done = 0;
   try {
-    const c = await caches.open("wt-music-v1");
+    const c = await caches.open(MUSIC_CACHE);
     for (const f of files) {
       if (!(await c.match(f))) await c.add(f);
       b.textContent = `Сохраняю музыку… ${++done}/${files.length}`;
@@ -253,7 +258,7 @@ async function cacheAll() {
 }
 async function checkOffline() {
   try {
-    const c = await caches.open("wt-music-v1");
+    const c = await caches.open(MUSIC_CACHE);
     const files = [...lib[TYPE], ...lib.relax].map((x) => x.file);
     let have = 0;
     for (const f of files) if (await c.match(f)) have++;
@@ -262,6 +267,60 @@ async function checkOffline() {
 }
 $("offline").addEventListener("click", cacheAll);
 
+// ---------- мои треки: хранятся только в телефоне (IndexedDB), в интернет не уходят ----------
+const my = { work: [], rest: [] };
+function idb() {
+  return new Promise((ok, bad) => {
+    const r = indexedDB.open("wt-my", 1);
+    r.onupgradeneeded = () => r.result.createObjectStore("tracks", { keyPath: "id", autoIncrement: true });
+    r.onsuccess = () => ok(r.result);
+    r.onerror = () => bad(r.error);
+  });
+}
+async function loadMy() {
+  my.work = []; my.rest = [];
+  try {
+    const db = await idb();
+    const all = await new Promise((ok, bad) => {
+      const q = db.transaction("tracks").objectStore("tracks").getAll();
+      q.onsuccess = () => ok(q.result); q.onerror = () => bad(q.error);
+    });
+    for (const t of all) if (t.type === TYPE) my[t.role].push(t);
+  } catch (e) {}
+  for (const role of ["work", "rest"]) {
+    const n = my[role].length;
+    $("my" + role + "n").textContent = n ? `своих треков: ${n}` : "играет встроенная музыка";
+    $("clr" + role).hidden = !n;
+  }
+}
+async function addMy(role, files) {
+  try {
+    const db = await idb();
+    await new Promise((ok, bad) => {
+      const tx = db.transaction("tracks", "readwrite");
+      for (const f of files) tx.objectStore("tracks").add({ type: TYPE, role, name: f.name, blob: f });
+      tx.oncomplete = ok; tx.onerror = () => bad(tx.error);
+    });
+  } catch (e) { alert("Не удалось сохранить треки: " + e.message); }
+  invalidate(); loadMy();
+}
+async function clearMy(role) {
+  if (!confirm("Убрать свои треки и вернуть встроенную музыку?")) return;
+  try {
+    const db = await idb();
+    await new Promise((ok, bad) => {
+      const tx = db.transaction("tracks", "readwrite");
+      for (const t of my[role]) tx.objectStore("tracks").delete(t.id);
+      tx.oncomplete = ok; tx.onerror = () => bad(tx.error);
+    });
+  } catch (e) {}
+  invalidate(); loadMy();
+}
+for (const role of ["work", "rest"]) {
+  $("my" + role).addEventListener("change", (e) => { if (e.target.files.length) addMy(role, [...e.target.files]); e.target.value = ""; });
+  $("clr" + role).addEventListener("click", () => clearMy(role));
+}
+
 (async function init() {
   document.title = PRESETS[TYPE].name;
   $("title").textContent = PRESETS[TYPE].name;
@@ -269,5 +328,7 @@ $("offline").addEventListener("click", cacheAll);
   if ("serviceWorker" in navigator) { try { await navigator.serviceWorker.register("sw.js"); } catch (e) {} }
   lib = await (await fetch("music/library.json")).json();
   checkOffline();
+  loadMy();
+  if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
   requestAnimationFrame(tick);
 })();

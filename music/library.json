@@ -2,261 +2,261 @@
  "jumps": [
   {
    "file": "music/jumps/01.mp3",
-   "title": "Cyborg Ninja",
-   "bpm": 160
+   "title": "MTA",
+   "bpm": 95
   },
   {
    "file": "music/jumps/02.mp3",
-   "title": "Furious Freak",
-   "bpm": 160
+   "title": "Griphop",
+   "bpm": 90
   },
   {
    "file": "music/jumps/03.mp3",
-   "title": "Blown Away",
-   "bpm": 170
+   "title": "Basic Implosion",
+   "bpm": 95
   },
   {
    "file": "music/jumps/04.mp3",
-   "title": "Exhilarate",
-   "bpm": 170
+   "title": "Vicious",
+   "bpm": 80
   },
   {
    "file": "music/jumps/05.mp3",
-   "title": "Ready Aim Fire",
-   "bpm": 172
+   "title": "Lewis and Dekalb",
+   "bpm": 72
   },
   {
    "file": "music/jumps/06.mp3",
-   "title": "District Four",
-   "bpm": 176
+   "title": "Rock Hybrid",
+   "bpm": 116
   },
   {
    "file": "music/jumps/07.mp3",
-   "title": "Cruising for Goblins",
-   "bpm": 155
+   "title": "Laser Groove",
+   "bpm": 140
   },
   {
    "file": "music/jumps/08.mp3",
-   "title": "Outfoxing the Fox",
-   "bpm": 160
+   "title": "Galactic Rap",
+   "bpm": 120
   },
   {
    "file": "music/jumps/09.mp3",
-   "title": "Pinball Spring 160",
-   "bpm": 160
+   "title": "Got Funk",
+   "bpm": 98
   },
   {
    "file": "music/jumps/10.mp3",
-   "title": "Neon Laser Horizon",
-   "bpm": 160
+   "title": "Just Nasty",
+   "bpm": 80
   }
  ],
  "bag": [
   {
    "file": "music/bag/01.mp3",
-   "title": "Metalmania",
-   "bpm": 150
+   "title": "Big Drumming",
+   "bpm": 104
   },
   {
    "file": "music/bag/02.mp3",
-   "title": "Neolith",
-   "bpm": 145
-  },
-  {
-   "file": "music/bag/03.mp3",
-   "title": "Breakdown",
-   "bpm": 140
-  },
-  {
-   "file": "music/bag/04.mp3",
-   "title": "Reformat",
-   "bpm": 140
-  },
-  {
-   "file": "music/bag/05.mp3",
-   "title": "Ropocolypse 2",
-   "bpm": 139
-  },
-  {
-   "file": "music/bag/06.mp3",
-   "title": "Faster Does It",
+   "title": "Trouble with Tribals",
    "bpm": 135
   },
   {
-   "file": "music/bag/07.mp3",
-   "title": "Trips It",
-   "bpm": 148
+   "file": "music/bag/03.mp3",
+   "title": "Mountain Emperor",
+   "bpm": 120
   },
   {
-   "file": "music/bag/08.mp3",
-   "title": "Ouroboros",
+   "file": "music/bag/04.mp3",
+   "title": "Undaunted",
+   "bpm": 95
+  },
+  {
+   "file": "music/bag/05.mp3",
+   "title": "Arcane",
+   "bpm": 93
+  },
+  {
+   "file": "music/bag/06.mp3",
+   "title": "Tafi Maradi no voice",
+   "bpm": 133
+  },
+  {
+   "file": "music/bag/07.mp3",
+   "title": "Lagoa v2",
    "bpm": 130
   },
   {
+   "file": "music/bag/08.mp3",
+   "title": "Suvaco do Cristo",
+   "bpm": 112
+  },
+  {
    "file": "music/bag/09.mp3",
-   "title": "Nano Hoedown",
-   "bpm": 150
+   "title": "Leblon",
+   "bpm": 122
   },
   {
    "file": "music/bag/10.mp3",
-   "title": "Eighties Action",
-   "bpm": 132
+   "title": "Exit the Premises",
+   "bpm": 128
   }
  ],
  "animal": [
   {
    "file": "music/animal/01.mp3",
-   "title": "Dentaneosuchus Hunt",
-   "bpm": 114
-  },
-  {
-   "file": "music/animal/02.mp3",
-   "title": "Sauropod Spotting",
-   "bpm": 105
-  },
-  {
-   "file": "music/animal/03.mp3",
-   "title": "Cretaceous Dawn",
-   "bpm": 96
-  },
-  {
-   "file": "music/animal/04.mp3",
-   "title": "Big Drumming",
-   "bpm": 104
-  },
-  {
-   "file": "music/animal/05.mp3",
-   "title": "Journey To Ascend",
-   "bpm": 116
-  },
-  {
-   "file": "music/animal/06.mp3",
-   "title": "Loopster",
+   "title": "Big Rock",
    "bpm": 108
   },
   {
+   "file": "music/animal/02.mp3",
+   "title": "Cool Rock",
+   "bpm": 128
+  },
+  {
+   "file": "music/animal/03.mp3",
+   "title": "Delay Rock",
+   "bpm": 112
+  },
+  {
+   "file": "music/animal/04.mp3",
+   "title": "Hotrock",
+   "bpm": 124
+  },
+  {
+   "file": "music/animal/05.mp3",
+   "title": "Riptide",
+   "bpm": 128
+  },
+  {
+   "file": "music/animal/06.mp3",
+   "title": "Sax, Rock, and Roll",
+   "bpm": 128
+  },
+  {
    "file": "music/animal/07.mp3",
-   "title": "Jet Fueled Vixen",
-   "bpm": 100
+   "title": "Neolith",
+   "bpm": 145
   },
   {
    "file": "music/animal/08.mp3",
-   "title": "Miami Nights - Extended Theme",
-   "bpm": 105
+   "title": "Twisted",
+   "bpm": 118
   },
   {
    "file": "music/animal/09.mp3",
-   "title": "Paradise Found",
-   "bpm": 105
+   "title": "Slow Burn",
+   "bpm": 84
   },
   {
    "file": "music/animal/10.mp3",
-   "title": "Mountain Emperor",
-   "bpm": 120
+   "title": "RetroFuture Dirty",
+   "bpm": 91
   }
  ],
  "strength": [
   {
    "file": "music/strength/01.mp3",
-   "title": "Rhinoceros",
-   "bpm": 126
-  },
-  {
-   "file": "music/strength/02.mp3",
-   "title": "Exit the Premises",
-   "bpm": 128
-  },
-  {
-   "file": "music/strength/03.mp3",
-   "title": "Latin Industries",
-   "bpm": 122
-  },
-  {
-   "file": "music/strength/04.mp3",
-   "title": "Cut and Dry",
-   "bpm": 122
-  },
-  {
-   "file": "music/strength/05.mp3",
-   "title": "Go Cart",
+   "title": "Funky Chunk",
    "bpm": 115
   },
   {
-   "file": "music/strength/06.mp3",
-   "title": "Urban Gauntlet",
-   "bpm": 116
-  },
-  {
-   "file": "music/strength/07.mp3",
-   "title": "Laserpack",
-   "bpm": 128
-  },
-  {
-   "file": "music/strength/08.mp3",
-   "title": "Voltaic",
+   "file": "music/strength/02.mp3",
+   "title": "Rocket Power",
    "bpm": 120
   },
   {
+   "file": "music/strength/03.mp3",
+   "title": "Funkorama",
+   "bpm": 101
+  },
+  {
+   "file": "music/strength/04.mp3",
+   "title": "Style Funk",
+   "bpm": 100
+  },
+  {
+   "file": "music/strength/05.mp3",
+   "title": "Protofunk",
+   "bpm": 113
+  },
+  {
+   "file": "music/strength/06.mp3",
+   "title": "Enter the Party",
+   "bpm": 120
+  },
+  {
+   "file": "music/strength/07.mp3",
+   "title": "Fork and Spoon",
+   "bpm": 120
+  },
+  {
+   "file": "music/strength/08.mp3",
+   "title": "C-Funk",
+   "bpm": 117
+  },
+  {
    "file": "music/strength/09.mp3",
-   "title": "Motivator",
-   "bpm": 126
+   "title": "Flutey Funk",
+   "bpm": 90
   },
   {
    "file": "music/strength/10.mp3",
-   "title": "Brain Dance",
-   "bpm": 124
+   "title": "Disco con Tutti",
+   "bpm": 115
   }
  ],
  "relax": [
   {
    "file": "music/relax/01.mp3",
-   "title": "Late Night Radio",
-   "bpm": 72
-  },
-  {
-   "file": "music/relax/02.mp3",
-   "title": "Study And Relax",
-   "bpm": 72
-  },
-  {
-   "file": "music/relax/03.mp3",
-   "title": "Past Sadness",
-   "bpm": 72
-  },
-  {
-   "file": "music/relax/04.mp3",
-   "title": "Almost Bliss",
-   "bpm": 90
-  },
-  {
-   "file": "music/relax/05.mp3",
-   "title": "Airship Serenity",
-   "bpm": 74
-  },
-  {
-   "file": "music/relax/06.mp3",
-   "title": "Slow Jam",
-   "bpm": 75
-  },
-  {
-   "file": "music/relax/07.mp3",
    "title": "Bossa Antigua",
    "bpm": 70
   },
   {
-   "file": "music/relax/08.mp3",
-   "title": "Too Cool",
+   "file": "music/relax/02.mp3",
+   "title": "BossaBossa",
+   "bpm": 77
+  },
+  {
+   "file": "music/relax/03.mp3",
+   "title": "Samba Isobel",
+   "bpm": 95
+  },
+  {
+   "file": "music/relax/04.mp3",
+   "title": "Cuban Sandwich",
    "bpm": 80
   },
   {
+   "file": "music/relax/05.mp3",
+   "title": "Modern Jazz Samba",
+   "bpm": 85
+  },
+  {
+   "file": "music/relax/06.mp3",
+   "title": "Casa Bossa Nova",
+   "bpm": 116
+  },
+  {
+   "file": "music/relax/07.mp3",
+   "title": "Sancho Panza gets a Latte",
+   "bpm": 84
+  },
+  {
+   "file": "music/relax/08.mp3",
+   "title": "Carnivale Intrigue",
+   "bpm": 95
+  },
+  {
    "file": "music/relax/09.mp3",
-   "title": "Morning",
-   "bpm": 60
+   "title": "Hackbeat",
+   "bpm": 80
   },
   {
    "file": "music/relax/10.mp3",
-   "title": "Energizing",
-   "bpm": 90
+   "title": "Quasi Motion",
+   "bpm": 100
   }
  ]
 }

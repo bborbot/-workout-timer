@@ -21,7 +21,13 @@
 <div id="phase"></div><div id="clock"></div><div id="left"></div>
 <a class="sub" id="save" hidden>Сохранить тренировку в «Файлы»</a>
 <button class="sub" id="offline">Сохранить музыку для работы без интернета</button>
+<h2>Моя музыка</h2>
+<p class="note">Свои песни (MP3, M4A) из «Файлов». Хранятся только в этом телефоне.</p>
+<label class="sub">+ Мои треки для работы<input type="file" id="mywork" accept="audio/*" multiple hidden></label>
+<div class="note" id="myworkn"></div><button class="sub" id="clrwork" hidden>Убрать мои треки для работы</button>
+<label class="sub">+ Мои треки для отдыха<input type="file" id="myrest" accept="audio/*" multiple hidden></label>
+<div class="note" id="myrestn"></div><button class="sub" id="clrrest" hidden>Убрать мои треки для отдыха</button>
 <p class="note">Перед каждой сменой — пик-пик-пик (3-2-1), на смене — длинный сигнал: высокий — работа, низкий — отдых.
-Музыка: Kevin MacLeod, <a href="credits.html">список треков</a>.</p>
+Встроенная музыка: Kevin MacLeod, <a href="credits.html">список треков</a>.</p>
 <audio id="player" preload="auto"></audio>
 </main><script src="app.js"></script></body></html>
