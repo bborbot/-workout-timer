@@ -5,9 +5,11 @@ import json
 from PIL import Image, ImageDraw, ImageFont
 
 APPS = {
+    "warmup":   ("Warm-up",      "#c2410c", "W"),
     "jumps":    ("Power",        "#d93636", "P"),
+    "speed":    ("Speed & Reaction", "#a16207", "Sp"),
     "bag":      ("Endurance",    "#1f5fd6", "E"),
-    "animal":   ("Coordination", "#1d8a4e", "C"),
+    "animal":   ("Coordination / Balance", "#1d8a4e", "C"),
     "strength": ("Strength",     "#7a3dc9", "S"),
     "stretch":  ("Stretching",   "#0b7285", "St"),
 }
@@ -94,7 +96,7 @@ def main():
         items.append(f'<a href="{key}.html"><img src="icons/{key}-180.png" alt="">{name}</a>')
     open("index.html", "w", encoding="utf-8").write(INDEX.format(items="\n".join(items)))
 
-    names = {"jumps": "Power", "bag": "Endurance", "animal": "Coordination", "strength": "Strength",
+    names = {"warmup": "Warm-up", "speed": "Speed & Reaction", "jumps": "Power", "bag": "Endurance", "animal": "Coordination / Balance", "strength": "Strength",
              "stretch": "Stretching", "relax": "Rest"}
     rows = []
     for cat, tracks in lib.items():

@@ -1,0 +1,21 @@
+{
+ "name": "Speed & Reaction",
+ "short_name": "Speed & Reaction",
+ "start_url": "speed.html",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#0e0e11",
+ "theme_color": "#a16207",
+ "icons": [
+  {
+   "src": "icons/speed-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icons/speed-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}

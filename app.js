@@ -5,9 +5,11 @@
 
 const TYPE = document.body.dataset.type;
 const PRESETS = {
+  warmup:   { name: "Warm-up",      work: 40,  rest: 10, total: 7 },
   jumps:    { name: "Power",        work: 30,  rest: 30, total: 15 },
+  speed:    { name: "Speed & Reaction", work: 10, rest: 50, total: 15 },
   bag:      { name: "Endurance",    work: 120, rest: 60, total: 20 },
-  animal:   { name: "Coordination", work: 45,  rest: 15, total: 20 },
+  animal:   { name: "Coordination / Balance", work: 45,  rest: 15, total: 20 },
   strength: { name: "Strength",     work: 40,  rest: 20, total: 30 },
   stretch:  { name: "Stretching",   work: 45,  rest: 15, total: 20 },
 };

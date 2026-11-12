@@ -1,4 +1,93 @@
 {
+ "warmup": [
+  {
+   "file": "music/warmup/01.mp3",
+   "title": "Montauk Point",
+   "bpm": 118
+  },
+  {
+   "file": "music/warmup/02.mp3",
+   "title": "Groundwork",
+   "bpm": 102
+  },
+  {
+   "file": "music/warmup/03.mp3",
+   "title": "Blue Ska",
+   "bpm": 110
+  },
+  {
+   "file": "music/warmup/04.mp3",
+   "title": "Happy Alley",
+   "bpm": 112
+  },
+  {
+   "file": "music/warmup/05.mp3",
+   "title": "Street Party",
+   "bpm": 114
+  },
+  {
+   "file": "music/warmup/06.mp3",
+   "title": "Galway",
+   "bpm": 110
+  },
+  {
+   "file": "music/warmup/07.mp3",
+   "title": "Verano Sensual",
+   "bpm": 103
+  },
+  {
+   "file": "music/warmup/08.mp3",
+   "title": "Bama Country",
+   "bpm": 100
+  },
+  {
+   "file": "music/warmup/09.mp3",
+   "title": "Aces High",
+   "bpm": 102
+  },
+  {
+   "file": "music/warmup/10.mp3",
+   "title": "Monster Promenade",
+   "bpm": 117
+  }
+ ],
+ "speed": [
+  {
+   "file": "music/speed/01.mp3",
+   "title": "Metalmania",
+   "bpm": 150
+  },
+  {
+   "file": "music/speed/02.mp3",
+   "title": "Ready Aim Fire",
+   "bpm": 172
+  },
+  {
+   "file": "music/speed/03.mp3",
+   "title": "District Four",
+   "bpm": 176
+  },
+  {
+   "file": "music/speed/04.mp3",
+   "title": "Professor Umlaut",
+   "bpm": 160
+  },
+  {
+   "file": "music/speed/05.mp3",
+   "title": "Boogie Party",
+   "bpm": 178
+  },
+  {
+   "file": "music/speed/06.mp3",
+   "title": "Aggressor",
+   "bpm": 150
+  },
+  {
+   "file": "music/speed/07.mp3",
+   "title": "Pump",
+   "bpm": 164
+  }
+ ],
  "jumps": [
   {
    "file": "music/jumps/01.mp3",

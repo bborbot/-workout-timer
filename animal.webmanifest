@@ -1,6 +1,6 @@
 {
- "name": "Coordination",
- "short_name": "Coordination",
+ "name": "Coordination / Balance",
+ "short_name": "Coordination / Balance",
  "start_url": "animal.html",
  "scope": "./",
  "display": "standalone",

@@ -1,4 +1,25 @@
 {
+ "warmup": [
+  "Montauk Point",
+  "Groundwork",
+  "Blue Ska",
+  "Happy Alley",
+  "Street Party",
+  "Galway",
+  "Verano Sensual",
+  "Bama Country",
+  "Aces High",
+  "Monster Promenade"
+ ],
+ "speed": [
+  "Metalmania",
+  "Ready Aim Fire",
+  "District Four",
+  "Professor Umlaut",
+  "Boogie Party",
+  "Aggressor",
+  "Pump"
+ ],
  "jumps": [
   "MTA",
   "Griphop",
