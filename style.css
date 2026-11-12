@@ -107,3 +107,6 @@ a.howto { margin-left:auto; color:var(--accent); font-weight:700; text-decoratio
 details.intro { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:0 12px; margin:0 0 12px; }
 details.intro summary { padding:10px 0; font-size:16px; font-weight:700; color:var(--muted); cursor:pointer; }
 details.intro p { color:var(--muted); font-size:15px; margin:0 0 10px; }
+
+details.disclaimer summary { cursor:pointer; }
+details.disclaimer p { margin:6px 0 2px; font-weight:400; }

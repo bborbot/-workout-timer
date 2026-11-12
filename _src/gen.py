@@ -95,8 +95,8 @@ or 75–150 min of vigorous activity, strength at least 2 days). Set your own we
 A workout played in the app is marked automatically with its minutes; tap <b>+</b> if you trained without the app.
 At the start of a new week you will see how last week went. Marks are stored on this phone only.</p>
 </details>
-<p class="disclaimer">This is the author’s personal view, not sports or medical advice. If you have health problems
-or injuries, or the workouts are for a child, ask a doctor or a coach first.</p>
+<details class="disclaimer"><summary>This is the author’s personal view, not sports or medical advice.</summary>
+<p>If you have health problems or injuries, or the workouts are for a child, ask a doctor or a coach first.</p></details>
 <div id="report"></div>
 <div class="menu">
 {items}
