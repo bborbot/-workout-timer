@@ -14,7 +14,7 @@ const SR = 22050;          // частота дорожки: моно 22 кГц 
 const LEAD = 6;            // секунд до первого раунда (спокойная музыка + отсчёт)
 const FADE = 0.25;         // плавность на стыках, с
 const MUSIC_UNDER_BEEP = 0.45;
-const MUSIC_CACHE = "wt-music-v2";
+const MUSIC_CACHE = "wt-music-v3";
 
 const $ = (id) => document.getElementById(id);
 const store = {

@@ -54,53 +54,53 @@
  "bag": [
   {
    "file": "music/bag/01.mp3",
-   "title": "Big Drumming",
-   "bpm": 104
+   "title": "Breakdown",
+   "bpm": 140
   },
   {
    "file": "music/bag/02.mp3",
-   "title": "Trouble with Tribals",
+   "title": "Faster Does It",
    "bpm": 135
   },
   {
    "file": "music/bag/03.mp3",
-   "title": "Mountain Emperor",
-   "bpm": 120
-  },
-  {
-   "file": "music/bag/04.mp3",
-   "title": "Undaunted",
-   "bpm": 95
-  },
-  {
-   "file": "music/bag/05.mp3",
-   "title": "Arcane",
-   "bpm": 93
-  },
-  {
-   "file": "music/bag/06.mp3",
-   "title": "Tafi Maradi no voice",
-   "bpm": 133
-  },
-  {
-   "file": "music/bag/07.mp3",
    "title": "Lagoa v2",
    "bpm": 130
   },
   {
+   "file": "music/bag/04.mp3",
+   "title": "Hit the Streets v2",
+   "bpm": 125
+  },
+  {
+   "file": "music/bag/05.mp3",
+   "title": "Trouble with Tribals",
+   "bpm": 135
+  },
+  {
+   "file": "music/bag/06.mp3",
+   "title": "Unity",
+   "bpm": 140
+  },
+  {
+   "file": "music/bag/07.mp3",
+   "title": "Movement Proposition",
+   "bpm": 126
+  },
+  {
    "file": "music/bag/08.mp3",
-   "title": "Suvaco do Cristo",
-   "bpm": 112
+   "title": "Mistake the Getaway",
+   "bpm": 141
   },
   {
    "file": "music/bag/09.mp3",
-   "title": "Leblon",
-   "bpm": 122
+   "title": "Welcome to the Show",
+   "bpm": 124
   },
   {
    "file": "music/bag/10.mp3",
-   "title": "Exit the Premises",
-   "bpm": 128
+   "title": "Mountain Emperor",
+   "bpm": 120
   }
  ],
  "animal": [

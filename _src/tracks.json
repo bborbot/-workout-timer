@@ -1,7 +1,62 @@
 {
-"jumps": ["MTA","Griphop","Basic Implosion","Vicious","Lewis and Dekalb","Rock Hybrid","Laser Groove","Galactic Rap","Got Funk","Just Nasty"],
-"bag": ["Big Drumming","Trouble with Tribals","Mountain Emperor","Undaunted","Arcane","Tafi Maradi no voice","Lagoa v2","Suvaco do Cristo","Leblon","Exit the Premises"],
-"animal": ["Big Rock","Cool Rock","Delay Rock","Hotrock","Riptide","Sax, Rock, and Roll","Neolith","Twisted","Slow Burn","RetroFuture Dirty"],
-"strength": ["Funky Chunk","Rocket Power","Funkorama","Style Funk","Protofunk","Enter the Party","Fork and Spoon","C-Funk","Flutey Funk","Disco con Tutti"],
-"relax": ["Bossa Antigua","BossaBossa","Samba Isobel","Cuban Sandwich","Modern Jazz Samba","Casa Bossa Nova","Sancho Panza gets a Latte","Carnivale Intrigue","Hackbeat","Quasi Motion"]
+ "jumps": [
+  "MTA",
+  "Griphop",
+  "Basic Implosion",
+  "Vicious",
+  "Lewis and Dekalb",
+  "Rock Hybrid",
+  "Laser Groove",
+  "Galactic Rap",
+  "Got Funk",
+  "Just Nasty"
+ ],
+ "bag": [
+  "Breakdown",
+  "Faster Does It",
+  "Lagoa v2",
+  "Hit the Streets v2",
+  "Trouble with Tribals",
+  "Unity",
+  "Movement Proposition",
+  "Mistake the Getaway",
+  "Welcome to the Show",
+  "Mountain Emperor"
+ ],
+ "animal": [
+  "Big Rock",
+  "Cool Rock",
+  "Delay Rock",
+  "Hotrock",
+  "Riptide",
+  "Sax, Rock, and Roll",
+  "Neolith",
+  "Twisted",
+  "Slow Burn",
+  "RetroFuture Dirty"
+ ],
+ "strength": [
+  "Funky Chunk",
+  "Rocket Power",
+  "Funkorama",
+  "Style Funk",
+  "Protofunk",
+  "Enter the Party",
+  "Fork and Spoon",
+  "C-Funk",
+  "Flutey Funk",
+  "Disco con Tutti"
+ ],
+ "relax": [
+  "Bossa Antigua",
+  "BossaBossa",
+  "Samba Isobel",
+  "Cuban Sandwich",
+  "Modern Jazz Samba",
+  "Casa Bossa Nova",
+  "Sancho Panza gets a Latte",
+  "Carnivale Intrigue",
+  "Hackbeat",
+  "Quasi Motion"
+ ]
 }
