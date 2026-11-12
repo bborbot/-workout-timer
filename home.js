@@ -32,7 +32,7 @@ function plan() {
 function renderToday() {
   const box = document.getElementById("today"), s = sched(), di = (new Date().getDay() + 6) % 7;
   if (!schedCounts()) {
-    box.innerHTML = `<div class="tday tmini"><b>Today</b> · no schedule yet · <a href="schedule.html">🗓 make one</a></div>`;
+    box.innerHTML = `<div class="tday tmini"><div><b>Today</b> · no schedule yet</div><a class="mk" href="schedule.html">🗓 make one</a></div>`;
     return;
   }
   const left = readLog().filter((x) => x.d === ymd(new Date())).map((x) => x.t);
