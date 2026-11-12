@@ -98,3 +98,8 @@ a.chip { text-decoration:none; display:inline-block; }
 .slot h3 { margin:8px 0; }
 .chip.toggle { background:var(--bg); color:var(--fg); border:1px solid var(--line); padding:8px 12px; font-size:15px; }
 .chip.toggle.on { color:#fff; border-color:transparent; }
+
+a.howto { margin-left:auto; color:var(--accent); font-weight:700; text-decoration:none; font-size:15px; padding:6px 0; }
+.gall summary { display:flex; align-items:center; gap:12px; list-style:none; }
+.gall summary::-webkit-details-marker { display:none; }
+.gall summary img { width:44px; height:44px; border-radius:10px; }

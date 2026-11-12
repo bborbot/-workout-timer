@@ -88,6 +88,7 @@ INDEX = """<!doctype html>
 </head><body><main>
 <h1>Workouts</h1>
 <div id="today"></div>
+<a class="sub guide" href="guides.html">📖 All workouts explained — what each one means</a>
 <p class="note">Recommended per week for a healthy adult (based on WHO guidance: 150–300 min of moderate
 or 75–150 min of vigorous activity, strength at least 2 days). Set your own weekly plan under each workout, or make a weekly schedule — then the plan is counted from it.
 A workout played in the app is marked automatically with its minutes; tap <b>+</b> if you trained without the app.
@@ -186,6 +187,20 @@ your weekly plan is counted from it. Stored on this phone only.</p>
 """
 
 
+def all_guides():
+    parts = []
+    for key, (name, color, letter) in APPS.items():
+        first = GUIDES[key][0][1]
+        parts.append(f'<details class="gall"><summary><img src="icons/{key}-180.png" alt="">{html.escape(name)}</summary>'
+                     f'{block(first)}<a class="sub" href="{key}-guide.html">Full description and the author’s preferences →</a>'
+                     f'<a class="sub" href="{key}.html">Open the timer</a></details>')
+    open("guides.html", "w", encoding="utf-8").write(GUIDE.replace("{name} — how to", "All workouts explained")
+        .replace('<a class="back" href="{key}.html">← back to the timer</a>', '<a class="back" href="index.html">← all workouts</a>')
+        .replace("<h1>{name}</h1>", "<h1>All workouts explained</h1>")
+        .replace('<a class="sub" href="{key}.html">Back to the timer</a>', '<a class="big" href="index.html">Back</a>')
+        .replace("{body}", "\n".join(parts)))
+
+
 def main():
     lib = json.load(open("music/library.json", encoding="utf-8"))
     items = []
@@ -204,7 +219,8 @@ def main():
                      f'<span><b>{name}</b><small>{rec}</small></span></a>'
                      f'<div class="cnt"><span class="n"></span><button class="plus" aria-label="done today">+</button></div>'
                      f'<div class="plan">My plan: <button class="pm" data-d="-1" aria-label="less">−</button>'
-                     f'<span class="pv"></span><button class="pm" data-d="1" aria-label="more">+</button><span class="pmin"></span></div></div>')
+                     f'<span class="pv"></span><button class="pm" data-d="1" aria-label="more">+</button><span class="pmin"></span>'
+                     f'<a class="howto" href="{key}-guide.html">📖 How to</a></div></div>')
     home = {"order": list(APPS), "apps": {k: {"name": v[0], "short": SHORT[k], "color": v[1], "min": REC[k][1], "goal": REC[k][2]}
                                           for k, v in APPS.items()}}
     for s in (180, 192, 512):
@@ -214,6 +230,7 @@ def main():
                "icons": [{"src": "icons/home-192.png", "sizes": "192x192", "type": "image/png"},
                          {"src": "icons/home-512.png", "sizes": "512x512", "type": "image/png"}]},
               open("home.webmanifest", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    all_guides()
     open("schedule.html", "w", encoding="utf-8").write(SCHED.format(home=json.dumps(home, ensure_ascii=False)))
     open("index.html", "w", encoding="utf-8").write(INDEX.format(items="\n".join(items),
                                                                  home=json.dumps(home, ensure_ascii=False)))
