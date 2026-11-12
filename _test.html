@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Груша</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Груша">
+<meta name="theme-color" content="#1f5fd6">
+<link rel="apple-touch-icon" href="icons/bag-180.png">
+<link rel="manifest" href="bag.webmanifest">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-type="bag"><main>
+<a class="back" href="index.html">← все тренировки</a>
+<h1 id="title">Груша</h1>
+<div class="row"><span class="lbl">Работа</span><button data-step="work" data-dir="-1">−</button><span class="val" id="work"></span><button data-step="work" data-dir="1">+</button></div>
+<div class="row"><span class="lbl">Отдых</span><button data-step="rest" data-dir="-1">−</button><span class="val" id="rest"></span><button data-step="rest" data-dir="1">+</button></div>
+<div class="row"><span class="lbl">Всего</span><button data-step="total" data-dir="-1">−</button><span class="val" id="total"></span><button data-step="total" data-dir="1">+</button></div>
+<div id="rounds"></div>
+<button class="big" id="start">Старт</button>
+<div id="phase"></div><div id="clock"></div><div id="left"></div>
+<a class="sub" id="save" hidden>Сохранить тренировку в «Файлы»</a>
+<button class="sub" id="offline">Сохранить музыку для работы без интернета</button>
+<p class="note">Перед каждой сменой — пик-пик-пик (3-2-1), на смене — длинный сигнал: высокий — работа, низкий — отдых.
+Музыка: Kevin MacLeod, <a href="credits.html">список треков</a>.</p>
+<audio id="player" preload="auto"></audio>
+</main><script src="app.js"></script><script>setTimeout(async()=>{while(!lib)await new Promise(r=>setTimeout(r,200));try{settings.work=10;settings.rest=10;settings.total=1;const t0=performance.now();const b=await render((p)=>{document.getElementById("left").textContent="P"+p.toFixed(2);});document.getElementById("phase").textContent="RESULT size="+b.size+" segs="+schedule.length+" end="+schedule[schedule.length-1].t1+" ms="+Math.round(performance.now()-t0);}catch(e){document.getElementById("phase").textContent="RESULT ERR "+e.message;}},1500);</script></body></html>

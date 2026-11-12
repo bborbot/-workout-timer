@@ -1,0 +1,262 @@
+{
+ "jumps": [
+  {
+   "file": "music/jumps/01.mp3",
+   "title": "Cyborg Ninja",
+   "bpm": 160
+  },
+  {
+   "file": "music/jumps/02.mp3",
+   "title": "Furious Freak",
+   "bpm": 160
+  },
+  {
+   "file": "music/jumps/03.mp3",
+   "title": "Blown Away",
+   "bpm": 170
+  },
+  {
+   "file": "music/jumps/04.mp3",
+   "title": "Exhilarate",
+   "bpm": 170
+  },
+  {
+   "file": "music/jumps/05.mp3",
+   "title": "Ready Aim Fire",
+   "bpm": 172
+  },
+  {
+   "file": "music/jumps/06.mp3",
+   "title": "District Four",
+   "bpm": 176
+  },
+  {
+   "file": "music/jumps/07.mp3",
+   "title": "Cruising for Goblins",
+   "bpm": 155
+  },
+  {
+   "file": "music/jumps/08.mp3",
+   "title": "Outfoxing the Fox",
+   "bpm": 160
+  },
+  {
+   "file": "music/jumps/09.mp3",
+   "title": "Pinball Spring 160",
+   "bpm": 160
+  },
+  {
+   "file": "music/jumps/10.mp3",
+   "title": "Neon Laser Horizon",
+   "bpm": 160
+  }
+ ],
+ "bag": [
+  {
+   "file": "music/bag/01.mp3",
+   "title": "Metalmania",
+   "bpm": 150
+  },
+  {
+   "file": "music/bag/02.mp3",
+   "title": "Neolith",
+   "bpm": 145
+  },
+  {
+   "file": "music/bag/03.mp3",
+   "title": "Breakdown",
+   "bpm": 140
+  },
+  {
+   "file": "music/bag/04.mp3",
+   "title": "Reformat",
+   "bpm": 140
+  },
+  {
+   "file": "music/bag/05.mp3",
+   "title": "Ropocolypse 2",
+   "bpm": 139
+  },
+  {
+   "file": "music/bag/06.mp3",
+   "title": "Faster Does It",
+   "bpm": 135
+  },
+  {
+   "file": "music/bag/07.mp3",
+   "title": "Trips It",
+   "bpm": 148
+  },
+  {
+   "file": "music/bag/08.mp3",
+   "title": "Ouroboros",
+   "bpm": 130
+  },
+  {
+   "file": "music/bag/09.mp3",
+   "title": "Nano Hoedown",
+   "bpm": 150
+  },
+  {
+   "file": "music/bag/10.mp3",
+   "title": "Eighties Action",
+   "bpm": 132
+  }
+ ],
+ "animal": [
+  {
+   "file": "music/animal/01.mp3",
+   "title": "Dentaneosuchus Hunt",
+   "bpm": 114
+  },
+  {
+   "file": "music/animal/02.mp3",
+   "title": "Sauropod Spotting",
+   "bpm": 105
+  },
+  {
+   "file": "music/animal/03.mp3",
+   "title": "Cretaceous Dawn",
+   "bpm": 96
+  },
+  {
+   "file": "music/animal/04.mp3",
+   "title": "Big Drumming",
+   "bpm": 104
+  },
+  {
+   "file": "music/animal/05.mp3",
+   "title": "Journey To Ascend",
+   "bpm": 116
+  },
+  {
+   "file": "music/animal/06.mp3",
+   "title": "Loopster",
+   "bpm": 108
+  },
+  {
+   "file": "music/animal/07.mp3",
+   "title": "Jet Fueled Vixen",
+   "bpm": 100
+  },
+  {
+   "file": "music/animal/08.mp3",
+   "title": "Miami Nights - Extended Theme",
+   "bpm": 105
+  },
+  {
+   "file": "music/animal/09.mp3",
+   "title": "Paradise Found",
+   "bpm": 105
+  },
+  {
+   "file": "music/animal/10.mp3",
+   "title": "Mountain Emperor",
+   "bpm": 120
+  }
+ ],
+ "strength": [
+  {
+   "file": "music/strength/01.mp3",
+   "title": "Rhinoceros",
+   "bpm": 126
+  },
+  {
+   "file": "music/strength/02.mp3",
+   "title": "Exit the Premises",
+   "bpm": 128
+  },
+  {
+   "file": "music/strength/03.mp3",
+   "title": "Latin Industries",
+   "bpm": 122
+  },
+  {
+   "file": "music/strength/04.mp3",
+   "title": "Cut and Dry",
+   "bpm": 122
+  },
+  {
+   "file": "music/strength/05.mp3",
+   "title": "Go Cart",
+   "bpm": 115
+  },
+  {
+   "file": "music/strength/06.mp3",
+   "title": "Urban Gauntlet",
+   "bpm": 116
+  },
+  {
+   "file": "music/strength/07.mp3",
+   "title": "Laserpack",
+   "bpm": 128
+  },
+  {
+   "file": "music/strength/08.mp3",
+   "title": "Voltaic",
+   "bpm": 120
+  },
+  {
+   "file": "music/strength/09.mp3",
+   "title": "Motivator",
+   "bpm": 126
+  },
+  {
+   "file": "music/strength/10.mp3",
+   "title": "Brain Dance",
+   "bpm": 124
+  }
+ ],
+ "relax": [
+  {
+   "file": "music/relax/01.mp3",
+   "title": "Late Night Radio",
+   "bpm": 72
+  },
+  {
+   "file": "music/relax/02.mp3",
+   "title": "Study And Relax",
+   "bpm": 72
+  },
+  {
+   "file": "music/relax/03.mp3",
+   "title": "Past Sadness",
+   "bpm": 72
+  },
+  {
+   "file": "music/relax/04.mp3",
+   "title": "Almost Bliss",
+   "bpm": 90
+  },
+  {
+   "file": "music/relax/05.mp3",
+   "title": "Airship Serenity",
+   "bpm": 74
+  },
+  {
+   "file": "music/relax/06.mp3",
+   "title": "Slow Jam",
+   "bpm": 75
+  },
+  {
+   "file": "music/relax/07.mp3",
+   "title": "Bossa Antigua",
+   "bpm": 70
+  },
+  {
+   "file": "music/relax/08.mp3",
+   "title": "Too Cool",
+   "bpm": 80
+  },
+  {
+   "file": "music/relax/09.mp3",
+   "title": "Morning",
+   "bpm": 60
+  },
+  {
+   "file": "music/relax/10.mp3",
+   "title": "Energizing",
+   "bpm": 90
+  }
+ ]
+}

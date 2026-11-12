@@ -1,0 +1,33 @@
+:root { --bg:#f4f4f6; --fg:#111; --muted:#45454d; --card:#fff; --line:#c9c9d1; --accent:#0a5bd8;
+  --work:#c21d1d; --rest:#11753c; --lead:#8a5a00; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0e0e11; --fg:#f4f4f6; --muted:#c4c4cc; --card:#1b1b20;
+  --line:#3a3a44; --accent:#5b9bff; --work:#ff5a5a; --rest:#3ddc84; --lead:#ffb340; } }
+* { box-sizing: border-box; }
+body { margin:0; font: 18px/1.4 -apple-system, "Segoe UI", sans-serif; background:var(--bg); color:var(--fg);
+  padding: max(16px, env(safe-area-inset-top)) 16px 32px; -webkit-tap-highlight-color: transparent; }
+main { max-width: 480px; margin: 0 auto; }
+h1 { font-size: 30px; margin: 4px 0 16px; }
+.row { display:flex; align-items:center; justify-content:space-between; background:var(--card);
+  border:1px solid var(--line); border-radius:14px; padding:10px 12px; margin-bottom:10px; }
+.row .lbl { font-size:17px; color:var(--muted); }
+.row .val { font-size:26px; font-weight:700; min-width:100px; text-align:center; font-variant-numeric: tabular-nums; }
+.row button { width:52px; height:52px; border-radius:12px; border:1px solid var(--line); background:var(--bg);
+  color:var(--fg); font-size:28px; font-weight:700; }
+#rounds { color:var(--muted); text-align:right; margin: -4px 4px 14px; font-size:15px; }
+.big { display:block; width:100%; padding:18px; font-size:24px; font-weight:700; border:0; border-radius:16px;
+  background:var(--accent); color:#fff; margin: 8px 0; text-align:center; text-decoration:none; }
+.big:disabled { opacity:.7; }
+.sub { display:block; width:100%; padding:12px; font-size:16px; border:1px solid var(--line); border-radius:12px;
+  background:var(--card); color:var(--fg); margin: 8px 0; text-align:center; text-decoration:none; }
+#phase { font-size:26px; font-weight:800; text-align:center; margin-top:18px; min-height:36px; }
+#clock { font-size:84px; font-weight:800; text-align:center; font-variant-numeric: tabular-nums; line-height:1.05; }
+#left { text-align:center; color:var(--muted); min-height:24px; }
+body.work #phase, body.work #clock { color:var(--work); }
+body.rest #phase, body.rest #clock { color:var(--rest); }
+body.lead #phase, body.lead #clock { color:var(--lead); }
+.menu a { display:flex; align-items:center; gap:14px; background:var(--card); border:1px solid var(--line);
+  border-radius:16px; padding:14px; margin-bottom:12px; color:var(--fg); text-decoration:none; font-size:22px; font-weight:700; }
+.menu img { width:56px; height:56px; border-radius:12px; }
+.note { color:var(--muted); font-size:15px; }
+a.back { color:var(--accent); text-decoration:none; font-size:17px; }
+audio { display:none; }

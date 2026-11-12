@@ -1,0 +1,8 @@
+<!doctype html><html><body><div id="o">start</div><script>
+const o=document.getElementById("o");
+(async()=>{try{
+ o.textContent="fetch";const r=await fetch("music/bag/01.mp3");const buf=await r.arrayBuffer();o.textContent="got "+buf.byteLength;
+ const C=window.OfflineAudioContext;const c=new C(1,22050,22050);
+ const ab=await new Promise((ok,bad)=>c.decodeAudioData(buf,ok,bad));o.textContent="OK len="+ab.length+" sr="+ab.sampleRate;
+}catch(e){o.textContent="ERR "+e}})();
+</script></body></html>

@@ -1,0 +1,21 @@
+{
+ "name": "Силовые",
+ "short_name": "Силовые",
+ "start_url": "strength.html",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#0e0e11",
+ "theme_color": "#7a3dc9",
+ "icons": [
+  {
+   "src": "icons/strength-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icons/strength-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}

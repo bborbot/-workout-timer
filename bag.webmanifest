@@ -1,0 +1,21 @@
+{
+ "name": "Груша",
+ "short_name": "Груша",
+ "start_url": "bag.html",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#0e0e11",
+ "theme_color": "#1f5fd6",
+ "icons": [
+  {
+   "src": "icons/bag-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icons/bag-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}

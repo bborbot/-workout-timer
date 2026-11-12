@@ -1,0 +1,21 @@
+{
+ "name": "Прыжки",
+ "short_name": "Прыжки",
+ "start_url": "jumps.html",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#0e0e11",
+ "theme_color": "#d93636",
+ "icons": [
+  {
+   "src": "icons/jumps-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "icons/jumps-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}
